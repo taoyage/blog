@@ -11,11 +11,11 @@ language: zh-Hans
 timezone:
 avatar: /images/1.PNG
 duoshuo_shortname: taoyage
-baidu_analytics: 7338a8354a1b67be6b425fcf98dcb29b
+baidu_analytics: d356ff9a4a964d4fc647445db4439faa
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://blog.taoyage.net
+url: http://www.taoyage.net
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
