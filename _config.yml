@@ -11,7 +11,7 @@ language: zh-Hans
 timezone:
 avatar: /images/1.PNG
 duoshuo_shortname: taoyage
-baidu_analytics: 6e8f0dcdbe8fb514fdcbc1b6f944a57a
+baidu_analytics: 7338a8354a1b67be6b425fcf98dcb29b
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
