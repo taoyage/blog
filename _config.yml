@@ -6,9 +6,12 @@
 title: accord
 subtitle: web前端
 description: 
-author: tao yage
-language:
+author: accord
+language: zh-Hans
 timezone:
+avatar: /images/1.PNG
+duoshuo_shortname: taoyage
+baidu_analytics: 6e8f0dcdbe8fb514fdcbc1b6f944a57a
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -63,7 +66,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
