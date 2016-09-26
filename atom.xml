@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.taoyage.net/"/>
-  <updated>2016-09-25T11:50:29.000Z</updated>
+  <updated>2016-09-26T16:00:50.000Z</updated>
   <id>http://www.taoyage.net/</id>
   
   <author>
@@ -16,57 +16,98 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>aaa</title>
-    <link href="http://www.taoyage.net/2016/09/25/aaa/"/>
-    <id>http://www.taoyage.net/2016/09/25/aaa/</id>
-    <published>2016-09-25T11:49:32.000Z</published>
-    <updated>2016-09-25T11:50:29.000Z</updated>
+    <title>Markdown语法</title>
+    <link href="http://www.taoyage.net/2016/09/26/markdown/"/>
+    <id>http://www.taoyage.net/2016/09/26/markdown/</id>
+    <published>2016-09-26T14:44:31.000Z</published>
+    <updated>2016-09-26T16:00:50.000Z</updated>
     
-    <content type="html"><![CDATA[<p>拉拉拉拉拉拉</p>
+    <content type="html"><![CDATA[<h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># h1</div><div class="line">## h2</div><div class="line">### h3</div><div class="line">#### h4</div><div class="line">##### h5</div><div class="line">###### h6</div></pre></td></tr></table></figure>
+<p>显示效果如下</p>
+<h1 id="h1"><a href="#h1" class="headerlink" title="h1"></a>h1</h1><h2 id="h2"><a href="#h2" class="headerlink" title="h2"></a>h2</h2><h3 id="h3"><a href="#h3" class="headerlink" title="h3"></a>h3</h3><h4 id="h4"><a href="#h4" class="headerlink" title="h4"></a>h4</h4><h5 id="h5"><a href="#h5" class="headerlink" title="h5"></a>h5</h5><h6 id="h6"><a href="#h6" class="headerlink" title="h6"></a>h6</h6><p>##无序列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">- 文本1</div><div class="line">- 文本2</div><div class="line">- 文本3</div></pre></td></tr></table></figure>
+<p>显示效果如下</p>
+<ul>
+<li>文本1</li>
+<li>文本2</li>
+<li>文本3</li>
+</ul>
+<p>##有序列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1. 文本1</div><div class="line">2. 文本2</div><div class="line">3. 文本3</div></pre></td></tr></table></figure>
+<p>显示效果如下</p>
+<ol>
+<li>文本1</li>
+<li>文本2</li>
+<li>文本3</li>
+</ol>
+<p>##代码引用</p>
+<p>将代码包裹在<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure></p>
+<pre><code>var a = 1;
+var b = 1;
+var c = 1;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">效果如下</div></pre></td></tr></table></figure>
+</code></pre><p>var a = 1;<br>var b = 1;<br>var c = 1;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">##链接</div></pre></td></tr></table></figure></p>
+<p><a href="https://github.com/taoyage" target="_blank" rel="external">github首页</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">效果如下</div><div class="line">[github首页](https://github.com/taoyage)</div><div class="line"></div><div class="line">##插入图片</div></pre></td></tr></table></figure></p>
+<p><img src="http://b.zol-img.com.cn/desk/bizhi/image/4/960x600/1395022832519.jpg" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">效果如下</div><div class="line"></div><div class="line">![Alt text](http://b.zol-img.com.cn/desk/bizhi/image/4/960x600/1395022832519.jpg)</div><div class="line"></div><div class="line">##分割线</div></pre></td></tr></table></figure></p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">效果如下</div><div class="line"></div><div class="line">分割线上</div><div class="line">- - -</div><div class="line">分割线下</div><div class="line"></div><div class="line"></div><div class="line">##表格</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">col1</th>
+<th style="text-align:center">col2</th>
+<th style="text-align:center">col3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">3</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">3</td>
+</tr>
+</tbody>
+</table>
+<p>```</p>
+<table>
+<thead>
+<tr>
+<th>col1</th>
+<th>col2</th>
+<th>col3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;拉拉拉拉拉拉&lt;/p&gt;
-
+      &lt;h2 id=&quot;标题&quot;&gt;&lt;a href=&quot;#标题&quot; class=&quot;headerlink&quot; title=&quot;标题&quot;&gt;&lt;/a&gt;标题&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div c
     
     </summary>
     
-      <category term="qian" scheme="http://www.taoyage.net/categories/qian/"/>
+      <category term="web前端工具" scheme="http://www.taoyage.net/categories/web%E5%89%8D%E7%AB%AF%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="web前端" scheme="http://www.taoyage.net/categories/web%E5%89%8D%E7%AB%AF%E5%B7%A5%E5%85%B7/web%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="aaa" scheme="http://www.taoyage.net/tags/aaa/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://www.taoyage.net/2016/09/25/first/"/>
-    <id>http://www.taoyage.net/2016/09/25/first/</id>
-    <published>2016-09-25T09:13:22.000Z</published>
-    <updated>2016-09-25T10:26:46.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
-    
-    </summary>
-    
-      <category term="Testing" scheme="http://www.taoyage.net/categories/Testing/"/>
-    
-    
-      <category term="testing" scheme="http://www.taoyage.net/tags/testing/"/>
+      <category term="markdow语法" scheme="http://www.taoyage.net/tags/markdow%E8%AF%AD%E6%B3%95/"/>
     
   </entry>
   
