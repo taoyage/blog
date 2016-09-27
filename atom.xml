@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.taoyage.net/"/>
-  <updated>2016-09-26T16:48:28.000Z</updated>
+  <updated>2016-09-27T07:20:08.000Z</updated>
   <id>http://www.taoyage.net/</id>
   
   <author>
@@ -16,21 +16,69 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>gulp</title>
+    <link href="http://www.taoyage.net/2016/09/27/gulp/"/>
+    <id>http://www.taoyage.net/2016/09/27/gulp/</id>
+    <published>2016-09-27T04:27:20.000Z</published>
+    <updated>2016-09-27T07:20:08.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文将带着你构建一个完整的gulp自动化开发环境</p>
+<h2 id="安装nodejs"><a href="#安装nodejs" class="headerlink" title="安装nodejs"></a>安装nodejs</h2><p>gulp基于nodejs的前端自动化工具,在使用前需要先安装nodejs,这里对nodejs的安装不做详细介绍具体参考nodejs官网。</p>
+<h2 id="全局安装gulp"><a href="#全局安装gulp" class="headerlink" title="全局安装gulp"></a>全局安装gulp</h2><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">npm</span> install --<span class="built_in">global</span> gulp</div></pre></td></tr></table></figure>
+<h2 id="初始化你的项目目录"><a href="#初始化你的项目目录" class="headerlink" title="初始化你的项目目录"></a>初始化你的项目目录</h2><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">npm</span> init</div></pre></td></tr></table></figure>
+<p>此时在你的项目根目录下将会出现一个package.json的文件,用来管理通过npm安装的模块</p>
+<h2 id="安装gulp到你的项目"><a href="#安装gulp到你的项目" class="headerlink" title="安装gulp到你的项目"></a>安装gulp到你的项目</h2><figure class="highlight q"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install gulp --<span class="built_in">save</span>-<span class="built_in">dev</span></div></pre></td></tr></table></figure>
+<p>查看package.json查看是否存在以下纪录,有则代表安装成功,之后在接下来所安装成功的模块都会依次出现在”devDependencies”下面</p>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="string">"devDependencies"</span>: &#123;</div><div class="line">  <span class="string">"gulp"</span>: <span class="string">"^3.9.1"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="在跟目录下创建gulpfile-js文件"><a href="#在跟目录下创建gulpfile-js文件" class="headerlink" title="在跟目录下创建gulpfile.js文件"></a>在跟目录下创建gulpfile.js文件</h2><p>打开gulpfile.js文件,写入以下代码,加载刚刚安装的gulp模块</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">const gulp</span> = require(<span class="string">"gulp"</span>);</div></pre></td></tr></table></figure>
+<h2 id="安装gulp插件"><a href="#安装gulp插件" class="headerlink" title="安装gulp插件"></a>安装gulp插件</h2><p>gulp有很多第三方开发的插件,这些插件都可以通过</p>
+<p><code>$ npm install packageName --save-dev</code> 来进行安装</p>
+<p>根据项目,来安装自己所需要的插件包,这篇文章里介绍几个常用的插件来做示例</p>
+<h3 id="gulp-concat"><a href="#gulp-concat" class="headerlink" title="gulp-concat"></a>gulp-concat</h3><p>gulp-concat是一个用来合并文件的插件,一般用来合并js文件较多</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm <span class="keyword">install</span> gulp-<span class="keyword">concat</span> <span class="comment">--save-dev</span></div></pre></td></tr></table></figure>
+<h4 id="gulpfile-示例"><a href="#gulpfile-示例" class="headerlink" title="gulpfile 示例"></a>gulpfile 示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> gulp = <span class="built_in">require</span>(<span class="string">"gulp"</span>);</div><div class="line"><span class="keyword">const</span> concat = <span class="built_in">require</span>(<span class="string">'gulp-concat'</span>);</div><div class="line"></div><div class="line">gulp.task(<span class="string">'scripts'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> gulp.src(<span class="string">'./js/*.js'</span>) <span class="comment">//指定要被合并的文件</span></div><div class="line">  .pipe(concat(<span class="string">'app.js'</span>)) <span class="comment">//将以上目录下的.js文件都合并到app.js文件中 </span></div><div class="line">  .pipe(gulp.dest(<span class="string">'./dist/'</span>)); <span class="comment">//配置app.js的输出目录</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="gulp-sass"><a href="#gulp-sass" class="headerlink" title="gulp-sass"></a>gulp-sass</h3><p>gulp-sass 自动将sass文件编译成css文件</p>
+<figure class="highlight q"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install gulp-sass --<span class="built_in">save</span>-<span class="built_in">dev</span></div></pre></td></tr></table></figure>
+<h4 id="gulpfile-示例-1"><a href="#gulpfile-示例-1" class="headerlink" title="gulpfile 示例"></a>gulpfile 示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> gulp = <span class="built_in">require</span>(<span class="string">"gulp"</span>);</div><div class="line"><span class="keyword">const</span> sass = <span class="built_in">require</span>(<span class="string">'gulp-sass'</span>);</div><div class="line"></div><div class="line">gulp.task(<span class="string">'sass'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> gulp.src(<span class="string">'./sass/**/*.scss'</span>)</div><div class="line">    .pipe(sass().on(<span class="string">'error'</span>, sass.logError))</div><div class="line">    .pipe(gulp.dest(<span class="string">'./dest/css/'</span>));</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="gulp-watch"><a href="#gulp-watch" class="headerlink" title="gulp-watch"></a>gulp-watch</h3><p>gulp－watch 用来自动监控任务</p>
+<figure class="highlight q"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install gulp-watch --<span class="built_in">save</span>-<span class="built_in">dev</span></div></pre></td></tr></table></figure>
+<h4 id="gulpfile-示例-2"><a href="#gulpfile-示例-2" class="headerlink" title="gulpfile 示例"></a>gulpfile 示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> gulp = <span class="built_in">require</span>(<span class="string">"gulp"</span>);</div><div class="line"><span class="keyword">const</span> watch = <span class="built_in">require</span>(<span class="string">'gulp-watch'</span>);</div><div class="line"></div><div class="line">gulp.task(<span class="string">'watch'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	watch([<span class="string">'./js/**/*.js'</span>],<span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">		gulp.start(<span class="string">'scripts'</span>);</div><div class="line">	&#125;);</div><div class="line">	watch(<span class="string">'./sass/**/*.scss'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">		gulp.start(<span class="string">'scripts'</span>);</div><div class="line">	&#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="gulpfile-最终代码示例"><a href="#gulpfile-最终代码示例" class="headerlink" title="gulpfile 最终代码示例"></a>gulpfile 最终代码示例</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> gulp = <span class="built_in">require</span>(<span class="string">"gulp"</span>);</div><div class="line"><span class="keyword">const</span> concat = <span class="built_in">require</span>(<span class="string">'gulp-concat'</span>);</div><div class="line"><span class="keyword">const</span> sass = <span class="built_in">require</span>(<span class="string">'gulp-sass'</span>);</div><div class="line"><span class="keyword">const</span> watch = <span class="built_in">require</span>(<span class="string">'gulp-watch'</span>);</div><div class="line"></div><div class="line"><span class="comment">/*合并js*/</span></div><div class="line">gulp.task(<span class="string">'scripts'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="keyword">return</span> gulp.src(<span class="string">'./js/**/*.js'</span>)</div><div class="line">	.pipe(concat(<span class="string">'app.js'</span>))</div><div class="line">	.pipe(gulp.dest(<span class="string">'./dist/js/'</span>));</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">/*编译sass*/</span></div><div class="line">gulp.task(<span class="string">'sass'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="keyword">return</span> gulp.src(<span class="string">'./sass/**/*.scss'</span>)</div><div class="line">	.pipe(sass().on(<span class="string">'error'</span>, sass.logError))</div><div class="line">	.pipe(gulp.dest(<span class="string">'./dest/css/'</span>));</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">/*监控*/</span></div><div class="line">gulp.task(<span class="string">'watch'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	watch([<span class="string">'./js/**/*.js'</span>],<span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">		gulp.start(<span class="string">'scripts'</span>);</div><div class="line">	&#125;);</div><div class="line">	watch(<span class="string">'./sass/**/*.scss'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">		gulp.start(<span class="string">'scripts'</span>);</div><div class="line">	&#125;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">gulp.task(<span class="string">'default'</span>, [<span class="string">'watch'</span>]);</div></pre></td></tr></table></figure>
+<p>此时只要在终端输入<code>$ gulp</code> 将自动执行以上配置好的任务<br>只要监控的文件发生改变,将会自动执行合并js任务或编译sass任务</p>
+<p>更完整的gulp配置可以看：<a href="https://github.com/taoyage/gulp" target="_blank" rel="external">https://github.com/taoyage/gulp</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文将带着你构建一个完整的gulp自动化开发环境&lt;/p&gt;
+&lt;h2 id=&quot;安装nodejs&quot;&gt;&lt;a href=&quot;#安装nodejs&quot; class=&quot;headerlink&quot; title=&quot;安装nodejs&quot;&gt;&lt;/a&gt;安装nodejs&lt;/h2&gt;&lt;p&gt;gulp基于nodejs的前
+    
+    </summary>
+    
+      <category term="前端开发工具" scheme="http://www.taoyage.net/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="-- gulp -- 前端自动化工具" scheme="http://www.taoyage.net/tags/gulp-%E5%89%8D%E7%AB%AF%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
     <title>markdown</title>
     <link href="http://www.taoyage.net/2016/09/27/markdown/"/>
     <id>http://www.taoyage.net/2016/09/27/markdown/</id>
     <published>2016-09-26T16:12:54.000Z</published>
-    <updated>2016-09-26T16:48:28.000Z</updated>
+    <updated>2016-09-27T04:29:32.000Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># h1</div><div class="line">## h2</div><div class="line">### h3</div><div class="line">#### h4</div><div class="line">##### h5</div><div class="line">###### h6</div></pre></td></tr></table></figure>
-<h2 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">- 文本1</div><div class="line">- 文本2</div><div class="line">- 文本3</div></pre></td></tr></table></figure>
+    <content type="html"><![CDATA[<h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><figure class="highlight vala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta"># h1</span></div><div class="line"><span class="meta">## h2</span></div><div class="line"><span class="meta">### h3</span></div><div class="line"><span class="meta">#### h4</span></div><div class="line"><span class="meta">##### h5</span></div><div class="line"><span class="meta">###### h6</span></div></pre></td></tr></table></figure>
+<h2 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h2><figure class="highlight haml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">-<span class="ruby"> 文本<span class="number">1</span></span></div><div class="line">-<span class="ruby"> 文本<span class="number">2</span></span></div><div class="line">-<span class="ruby"> 文本<span class="number">3</span></span></div></pre></td></tr></table></figure>
 <p>显示效果如下</p>
 <ul>
 <li>文本1</li>
 <li>文本2</li>
 <li>文本3</li>
 </ul>
-<h2 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1. 文本1</div><div class="line">2. 文本2</div><div class="line">3. 文本3</div></pre></td></tr></table></figure>
+<h2 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h2><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="number">1.</span> 文本<span class="number">1</span></div><div class="line"><span class="number">2.</span> 文本<span class="number">2</span></div><div class="line"><span class="number">3.</span> 文本<span class="number">3</span></div></pre></td></tr></table></figure>
 <p>显示效果如下</p>
 <ol>
 <li>文本1</li>
@@ -38,18 +86,18 @@
 <li>文本3</li>
 </ol>
 <h2 id="代码引用"><a href="#代码引用" class="headerlink" title="代码引用"></a>代码引用</h2><p>代码上下分别用三个`来包裹</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var a = 1;</div><div class="line">var b = 1;</div><div class="line">var c = 1;</div></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">var a</span> = 1;</div><div class="line"><span class="attribute">var b</span> = 1;</div><div class="line"><span class="attribute">var c</span> = 1;</div></pre></td></tr></table></figure>
 <h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[github首页](https://github.com/taoyage)</div></pre></td></tr></table></figure>
 <p>效果如下<br><a href="https://github.com/taoyage" target="_blank" rel="external">github首页</a></p>
-<h2 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">![](http://b.zol-img.com.cn/desk/bizhi/image/4/960x600/1395022832519.jpg)</div></pre></td></tr></table></figure>
+<h2 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h2><figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">![](http:<span class="regexp">//</span>b.zol-img.com.cn<span class="regexp">/desk/</span>bizhi<span class="regexp">/image/</span><span class="number">4</span><span class="regexp">/960x600/</span><span class="number">1395022832519</span>.jpg)</div></pre></td></tr></table></figure>
 <p>效果如下</p>
 <p><img src="http://b.zol-img.com.cn/desk/bizhi/image/4/960x600/1395022832519.jpg" alt="Alt text"></p>
-<h2 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- - -</div></pre></td></tr></table></figure>
+<h2 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h2><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="bullet">- </span>- -</div></pre></td></tr></table></figure>
 <p>效果如下</p>
 <p>分割线上</p>
 <hr>
 <p>分割线下</p>
-<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">| col1 | col2 | col3 |</div><div class="line">|:----:|:----:|:----:|</div><div class="line">|  1   |   2  |   3  |</div><div class="line">|  1   |   2  |   3  |</div></pre></td></tr></table></figure>
+<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="params">| col1 |</span> col2 <span class="params">| col3 |</span></div><div class="line"><span class="params">|:----:|</span><span class="symbol">:----</span><span class="symbol">:|</span><span class="symbol">:----</span><span class="symbol">:|</span></div><div class="line"><span class="params">|  1   |</span>   <span class="number">2</span>  <span class="params">|   3  |</span></div><div class="line"><span class="params">|  1   |</span>   <span class="number">2</span>  <span class="params">|   3  |</span></div></pre></td></tr></table></figure>
 <table>
 <thead>
 <tr>
@@ -75,11 +123,11 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;标题&quot;&gt;&lt;a href=&quot;#标题&quot; class=&quot;headerlink&quot; title=&quot;标题&quot;&gt;&lt;/a&gt;标题&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div c
+      &lt;h2 id=&quot;标题&quot;&gt;&lt;a href=&quot;#标题&quot; class=&quot;headerlink&quot; title=&quot;标题&quot;&gt;&lt;/a&gt;标题&lt;/h2&gt;&lt;figure class=&quot;highlight vala&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div cl
     
     </summary>
     
-      <category term="前端工具" scheme="http://www.taoyage.net/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E5%85%B7/"/>
+      <category term="前端开发工具" scheme="http://www.taoyage.net/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
     
     
       <category term="markdown语法" scheme="http://www.taoyage.net/tags/markdown%E8%AF%AD%E6%B3%95/"/>
@@ -91,7 +139,7 @@
     <link href="http://www.taoyage.net/2016/09/24/hello-world/"/>
     <id>http://www.taoyage.net/2016/09/24/hello-world/</id>
     <published>2016-09-24T10:53:20.000Z</published>
-    <updated>2016-09-25T10:31:41.000Z</updated>
+    <updated>2016-09-27T04:52:16.000Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
