@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.taoyage.net/"/>
-  <updated>2016-09-27T07:20:08.000Z</updated>
+  <updated>2016-09-28T15:07:19.000Z</updated>
   <id>http://www.taoyage.net/</id>
   
   <author>
@@ -14,6 +14,42 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>git常用命令</title>
+    <link href="http://www.taoyage.net/2016/09/28/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+    <id>http://www.taoyage.net/2016/09/28/git常用命令/</id>
+    <published>2016-09-28T14:41:04.000Z</published>
+    <updated>2016-09-28T15:07:19.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="初始化本地git仓库"><a href="#初始化本地git仓库" class="headerlink" title="初始化本地git仓库"></a>初始化本地git仓库</h3><p><code>$ git init</code></p>
+<h3 id="查看当前仓库状态"><a href="#查看当前仓库状态" class="headerlink" title="查看当前仓库状态"></a>查看当前仓库状态</h3><p><code>$ git status</code></p>
+<h3 id="查看修改日志"><a href="#查看修改日志" class="headerlink" title="查看修改日志"></a>查看修改日志</h3><p><code>$ git log</code></p>
+<h3 id="恢复到某个版本"><a href="#恢复到某个版本" class="headerlink" title="恢复到某个版本"></a>恢复到某个版本</h3><p><code>$ git reset --hard HEAD</code>(HEAD 指的是通过<code>$ git log</code>命令来获取的commit的后6位值)</p>
+<h3 id="添加所有文件到缓存"><a href="#添加所有文件到缓存" class="headerlink" title="添加所有文件到缓存"></a>添加所有文件到缓存</h3><p><code>$ git add --all</code></p>
+<h3 id="提交修改信息"><a href="#提交修改信息" class="headerlink" title="提交修改信息"></a>提交修改信息</h3><p><code>$ git commit -m &quot;修改信息&quot;</code></p>
+<h3 id="推送到远程仓库"><a href="#推送到远程仓库" class="headerlink" title="推送到远程仓库"></a>推送到远程仓库</h3><p><code>$ git push -u origin master</code></p>
+<h3 id="从远程仓库获取数据"><a href="#从远程仓库获取数据" class="headerlink" title="从远程仓库获取数据"></a>从远程仓库获取数据</h3><p><code>$ git pull origin master</code></p>
+<h3 id="列出所有分支"><a href="#列出所有分支" class="headerlink" title="列出所有分支"></a>列出所有分支</h3><p><code>$ git branch</code></p>
+<h3 id="创建新分支"><a href="#创建新分支" class="headerlink" title="创建新分支"></a>创建新分支</h3><p><code>$ git branch name</code></p>
+<h3 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h3><p><code>$ git checkout name</code></p>
+<h3 id="删除本地分支"><a href="#删除本地分支" class="headerlink" title="删除本地分支"></a>删除本地分支</h3><p><code>$ git branch -d name</code></p>
+<h3 id="删除远程分支"><a href="#删除远程分支" class="headerlink" title="删除远程分支"></a>删除远程分支</h3><p><code>$ git push origin : name</code></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;初始化本地git仓库&quot;&gt;&lt;a href=&quot;#初始化本地git仓库&quot; class=&quot;headerlink&quot; title=&quot;初始化本地git仓库&quot;&gt;&lt;/a&gt;初始化本地git仓库&lt;/h3&gt;&lt;p&gt;&lt;code&gt;$ git init&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;查看
+    
+    </summary>
+    
+      <category term="前端开发工具" scheme="http://www.taoyage.net/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="-- git -- github" scheme="http://www.taoyage.net/tags/git-github/"/>
+    
+  </entry>
   
   <entry>
     <title>gulp</title>
