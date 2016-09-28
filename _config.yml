@@ -43,7 +43,7 @@ future: true
 highlight:
   enable: true
   line_number: true
-  auto_detect: false
+  auto_detect: true
   tab_replace:
 
 # Category & Tag
@@ -75,9 +75,21 @@ deploy:
   repo: https://github.com/taoyage/blog
   branch: gh-pages
 
-# title, chinese available
-links:
-  github: https://github.com/taoyage
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+
+# hexo sitemap网站地图
+sitemap:
+  path: sitemap.xml
+
+baidusitemap:
+  path: baidusitemap.xml
+
+
+
 
 
 
