@@ -1,0 +1,815 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="node嵌入式数据库,NEDB中文文档,NeDB中文API," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="accord" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="NeDB简介NeDB是一款用于Node.js开发的NoSQL嵌入式内存数据库,完全采用javascript开发,可以使用在html5桌面应用程序,以及浏览器端应用,其api是MongoDB的一个子集,具有简单,轻量,速度快等特点.
+安装NeDBNeDB可以通过npm和bower来进行安装
+123$ npm install nedb --save$ bower install nedb --save">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NeDB中文文档">
+<meta property="og:url" content="http://www.taoyage.net/2016/09/29/NEDB语法以及使用教程/index.html">
+<meta property="og:site_name" content="accord">
+<meta property="og:description" content="NeDB简介NeDB是一款用于Node.js开发的NoSQL嵌入式内存数据库,完全采用javascript开发,可以使用在html5桌面应用程序,以及浏览器端应用,其api是MongoDB的一个子集,具有简单,轻量,速度快等特点.
+安装NeDBNeDB可以通过npm和bower来进行安装
+123$ npm install nedb --save$ bower install nedb --save">
+<meta property="og:updated_time" content="2016-09-30T07:18:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NeDB中文文档">
+<meta name="twitter:description" content="NeDB简介NeDB是一款用于Node.js开发的NoSQL嵌入式内存数据库,完全采用javascript开发,可以使用在html5桌面应用程序,以及浏览器端应用,其api是MongoDB的一个子集,具有简单,轻量,速度快等特点.
+安装NeDBNeDB可以通过npm和bower来进行安装
+123$ npm install nedb --save$ bower install nedb --save">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://www.taoyage.net/2016/09/29/NEDB语法以及使用教程/"/>
+
+  <title> NeDB中文文档 | accord </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?d356ff9a4a964d4fc647445db4439faa";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">accord</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">web前端</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                NeDB中文文档
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-29T23:41:15+09:00" content="2016-09-29">
+              2016-09-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/前端开发/" itemprop="url" rel="index">
+                    <span itemprop="name">前端开发</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/29/NEDB语法以及使用教程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/29/NEDB语法以及使用教程/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/09/29/NEDB语法以及使用教程/" class="leancloud_visitors" data-flag-title="NeDB中文文档">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="NeDB简介"><a href="#NeDB简介" class="headerlink" title="NeDB简介"></a>NeDB简介</h2><p>NeDB是一款用于Node.js开发的NoSQL嵌入式内存数据库,完全采用javascript开发,可以使用在html5桌面应用程序,以及浏览器端应用,其api是MongoDB的一个子集,具有简单,轻量,速度快等特点.</p>
+<h2 id="安装NeDB"><a href="#安装NeDB" class="headerlink" title="安装NeDB"></a>安装NeDB</h2><p>NeDB可以通过npm和bower来进行安装</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ npm <span class="keyword">install</span> nedb <span class="comment">--save</span></div><div class="line"></div><div class="line">$ bower <span class="keyword">install</span> nedb <span class="comment">--save</span></div></pre></td></tr></table></figure>
+<h2 id="NeDB-API"><a href="#NeDB-API" class="headerlink" title="NeDB API"></a>NeDB API</h2><h3 id="创建-加载一个数据库"><a href="#创建-加载一个数据库" class="headerlink" title="创建/加载一个数据库"></a>创建/加载一个数据库</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 类型 1: 创建一个内存数据库 (不需要去加载数据库)</span></div><div class="line"><span class="keyword">var</span> Datastore = <span class="built_in">require</span>(<span class="string">'nedb'</span>)</div><div class="line"><span class="keyword">var</span> db = <span class="keyword">new</span> Datastore();</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// 类型 2: 本地存储数据库,需要手动去加载数据库</span></div><div class="line"><span class="keyword">var</span> Datastore = <span class="built_in">require</span>(<span class="string">'nedb'</span>)</div><div class="line"><span class="keyword">var</span> db = <span class="keyword">new</span> Datastore(&#123; <span class="attr">filename</span>: <span class="string">'path/to/datafile'</span> &#125;);</div><div class="line"></div><div class="line">db.loadDatabase(); <span class="comment">//数据库可以直接加载或者用下面这种回调的方式</span></div><div class="line">db.loadDatabase(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123; </div><div class="line">	</div><div class="line">&#125;);</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// 类型 3: 本地存储数据,自动加载数据库</span></div><div class="line"><span class="keyword">var</span> Datastore = <span class="built_in">require</span>(<span class="string">'nedb'</span>)</div><div class="line">  , db = <span class="keyword">new</span> Datastore(&#123; <span class="attr">filename</span>: <span class="string">'path/to/datafile'</span>, <span class="attr">autoload</span>: <span class="literal">true</span> &#125;);</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// 类型 4: 本地存储数据用于html5和javascript来制作的桌面应用程序去调用'nwtest'</span></div><div class="line"><span class="comment">// 举例,在linux上, data文件在 ~/.config/nwtest/nedb-data/something.db</span></div><div class="line"><span class="keyword">var</span> Datastore = <span class="built_in">require</span>(<span class="string">'nedb'</span>)</div><div class="line">  , path = <span class="built_in">require</span>(<span class="string">'path'</span>)</div><div class="line">  , db = <span class="keyword">new</span> Datastore(&#123; <span class="attr">filename</span>: path.join(<span class="built_in">require</span>(<span class="string">'nw.gui'</span>).App.dataPath, <span class="string">'something.db'</span>) &#125;);</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// 类型 5: 创建多个数据库</span></div><div class="line">db = &#123;&#125;;</div><div class="line">db.users = <span class="keyword">new</span> Datastore(<span class="string">'path/to/users.db'</span>);</div><div class="line">db.robots = <span class="keyword">new</span> Datastore(<span class="string">'path/to/robots.db'</span>);</div><div class="line"></div><div class="line"><span class="comment">// 如果不配置autoload,这里需要手动加载数据库(该方法是异步的)</span></div><div class="line">db.users.loadDatabase();</div><div class="line">db.robots.loadDatabase();</div></pre></td></tr></table></figure>
+<h3 id="插入数据-db-inster-doc-callback"><a href="#插入数据-db-inster-doc-callback" class="headerlink" title="插入数据(db.inster(doc,callback))"></a>插入数据(db.inster(doc,callback))</h3><p>数据类型可以是String,Number,Boolean,Date,null,也可以使用数组和对象来进行存储.如果字段是undefined,将不会进行存储(这一点和MongoDB有点不同,MongoDB会吧undefined自动转换成null来进行存储).</p>
+<p>如果文档中没有id字段,NeDB将自动生成一个16位字符的字符串存储到数据库,无法修改.</p>
+<p>字段名不能以’$’开头或包含’.’</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> doc = &#123; </div><div class="line">	<span class="attr">hello</span>: <span class="string">'world'</span>,</div><div class="line">	<span class="attr">n</span>: <span class="number">5</span>, </div><div class="line">	<span class="attr">today</span>: <span class="keyword">new</span> <span class="built_in">Date</span>(),</div><div class="line">	<span class="attr">nedbIsAwesome</span>: <span class="literal">true</span>,</div><div class="line">	<span class="attr">notthere</span>: <span class="literal">null</span>,</div><div class="line">	<span class="attr">notToBeSaved</span>: <span class="literal">undefined</span>,  <span class="comment">//undefined值将不会进行存储</span></div><div class="line">	fruits: [ <span class="string">'apple'</span>, <span class="string">'orange'</span>, <span class="string">'pear'</span> ],</div><div class="line">	<span class="attr">infos</span>: &#123; <span class="attr">name</span>: <span class="string">'nedb'</span> &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">db.insert(doc, <span class="function"><span class="keyword">function</span> (<span class="params">err, newDoc</span>) </span>&#123;  </div><div class="line">	<span class="comment">// Callback</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">//callback函数可有可无也可以写成下面这种形式</span></div><div class="line"></div><div class="line">db.insert(doc)</div></pre></td></tr></table></figure>
+<h3 id="插入多个数组"><a href="#插入多个数组" class="headerlink" title="插入多个数组"></a>插入多个数组</h3><figure class="highlight delphi"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">db.insert([<span class="comment">&#123; a: 5 &#125;</span>, <span class="comment">&#123; a: 42 &#125;</span>], <span class="function"><span class="keyword">function</span> <span class="params">(err, newDocs)</span> <span class="comment">&#123;</span></span></div><div class="line"> 	</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// 以下的例子,两个a字段的值相同将会报错</span></div><div class="line">db.insert([<span class="comment">&#123; a: 5 &#125;</span>, <span class="comment">&#123; a: 42 &#125;</span>, <span class="comment">&#123; a: 5 &#125;</span>], <span class="function"><span class="keyword">function</span> <span class="params">(err)</span> <span class="comment">&#123;</span></span></div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3><p>这里拟定了一个数据库,下面所介绍的内容,都会以这个数据库进行操作,举例</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123; <span class="string">_id:</span> <span class="string">'id1'</span>, <span class="string">planet:</span> <span class="string">'Mars'</span>, <span class="string">system:</span> <span class="string">'solar'</span>, <span class="string">inhabited:</span> <span class="literal">false</span>, <span class="string">satellites:</span> [<span class="string">'Phobos'</span>, <span class="string">'Deimos'</span>] &#125;</div><div class="line">&#123; <span class="string">_id:</span> <span class="string">'id2'</span>, <span class="string">planet:</span> <span class="string">'Earth'</span>, <span class="string">system:</span> <span class="string">'solar'</span>, <span class="string">inhabited:</span> <span class="literal">true</span>, <span class="string">humans:</span> &#123; <span class="string">genders:</span> <span class="number">2</span>, <span class="string">eyes:</span> <span class="literal">true</span> &#125; &#125;</div><div class="line">&#123; <span class="string">_id:</span> <span class="string">'id3'</span>, <span class="string">planet:</span> <span class="string">'Jupiter'</span>, <span class="string">system:</span> <span class="string">'solar'</span>, <span class="string">inhabited:</span> <span class="literal">false</span> &#125;</div><div class="line">&#123; <span class="string">_id:</span> <span class="string">'id4'</span>, <span class="string">planet:</span> <span class="string">'Omicron Persei 8'</span>, <span class="string">system:</span> <span class="string">'futurama'</span>, <span class="string">inhabited:</span> <span class="literal">true</span>, <span class="string">humans:</span> &#123; <span class="string">genders:</span> <span class="number">7</span> &#125; &#125;</div><div class="line">&#123; <span class="string">_id:</span> <span class="string">'id5'</span>, <span class="string">completeData:</span> &#123; <span class="string">planets:</span> [ &#123; <span class="string">name:</span> <span class="string">'Earth'</span>, <span class="string">number:</span> <span class="number">3</span> &#125;, &#123; <span class="string">name:</span> <span class="string">'Mars'</span>, <span class="string">number:</span> <span class="number">2</span> &#125;, &#123; <span class="string">name:</span> <span class="string">'Pluton'</span>, <span class="string">number:</span> <span class="number">9</span> &#125; ] &#125; &#125;</div></pre></td></tr></table></figure>
+<h3 id="查找文档-db-find-query-callback"><a href="#查找文档-db-find-query-callback" class="headerlink" title="查找文档(db.find({query},callback))"></a>查找文档(db.find({query},callback))</h3><p>在对文档进行匹配查询的时候,可以去使用($lt, $lte, $gt, $gte, $in, $nin, $ne)比较运算符,也可以去使用($or, $and, $not , $where)逻辑运算符,以及正则表达式.</p>
+<p>callback(可选): 包含参数err和docs，err里是错误信息，docs是查询到的文档.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 查找所有带有solar的数据</span></div><div class="line">db.find(&#123; <span class="attr">system</span>: <span class="string">'solar'</span> &#125;, <span class="function"><span class="keyword">function</span> (<span class="params">err, docs</span>) </span>&#123;</div><div class="line">  <span class="comment">// 这里的docs返回的将id1,id2,id3文档的数组</span></div><div class="line">  <span class="comment">// 如果没有查询到含有solar值的system字段,docs返回的将是一个[]</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// 使用正则表达式去匹配查询含有/ar/值的planet字段文档</span></div><div class="line">db.find(&#123; <span class="attr">planet</span>: <span class="regexp">/ar/</span> &#125;, <span class="function"><span class="keyword">function</span> (<span class="params">err, docs</span>) </span>&#123;</div><div class="line">  <span class="comment">// 返回的docs将是包含mars,earth值的文档</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// 使用多个条件去查询</span></div><div class="line">db.find(&#123; <span class="attr">system</span>: <span class="string">'solar'</span>, <span class="attr">inhabited</span>: <span class="literal">true</span> &#125;, <span class="function"><span class="keyword">function</span> (<span class="params">err, docs</span>) </span>&#123;</div><div class="line">  <span class="comment">// 这里的docs返回的将是只包含Earth值的文档</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// 使用对象的匹配查找</span></div><div class="line">db.find(&#123; <span class="string">"humans.genders"</span>: <span class="number">2</span> &#125;, <span class="function"><span class="keyword">function</span> (<span class="params">err, docs</span>) </span>&#123;</div><div class="line">  <span class="comment">// docs返回的将是包含Earth值的文档</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// 通过数组对象去匹配查询</span></div><div class="line">db.find(&#123; <span class="string">"completeData.planets.name"</span>: <span class="string">"Mars"</span> &#125;, <span class="function"><span class="keyword">function</span> (<span class="params">err, docs</span>) </span>&#123;</div><div class="line">  <span class="comment">// 这里将返回id5的文档</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line">db.find(&#123; <span class="string">"completeData.planets.name"</span>: <span class="string">"Jupiter"</span> &#125;, <span class="function"><span class="keyword">function</span> (<span class="params">err, docs</span>) </span>&#123;</div><div class="line">  <span class="comment">// 返回空数组</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line">db.find(&#123; <span class="string">"completeData.planets.0.name"</span>: <span class="string">"Earth"</span> &#125;, <span class="function"><span class="keyword">function</span> (<span class="params">err, docs</span>) </span>&#123;</div><div class="line">  <span class="comment">// 返回id5的文档</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// 对象深度比较查询，不要与"."的使用混淆</span></div><div class="line">db.find(&#123; <span class="attr">humans</span>: &#123; <span class="attr">genders</span>: <span class="number">2</span> &#125; &#125;, <span class="function"><span class="keyword">function</span> (<span class="params">err, docs</span>) </span>&#123;</div><div class="line">  <span class="comment">// 返回空, 因为 &#123; genders: 2 &#125; 不等于 &#123; genders: 2, eyes: true &#125;</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// 查询匹配所有文档</span></div><div class="line">db.find(&#123;&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">err, docs</span>) </span>&#123;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// 如果只想查找某一条文档,可以使用唯一的id来进行查询</span></div><div class="line">db.findOne(&#123; <span class="attr">_id</span>: <span class="string">'id1'</span> &#125;, <span class="function"><span class="keyword">function</span> (<span class="params">err, doc</span>) </span>&#123;</div><div class="line">  <span class="comment">// 如果没有匹配的文档,返回的将是null</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="比较运算符-lt-lte-gt-gte-in-nin-ne-exists-regex"><a href="#比较运算符-lt-lte-gt-gte-in-nin-ne-exists-regex" class="headerlink" title="比较运算符($lt, $lte, $gt, $gte, $in, $nin, $ne, $exists, $regex)"></a>比较运算符($lt, $lte, $gt, $gte, $in, $nin, $ne, $exists, $regex)</h3><p>语法是 <code>{ field: { $op: value } }</code> 这里的 <code>$op</code> 是表示这里可以填写任意的运算符</p>
+<ul>
+<li>$lt, $lte: 小于，小于等于</li>
+<li>$gt, $gte: 大于，大于等于</li>
+<li>$in: 属于</li>
+<li>$ne, $nin: 不等于，不属于</li>
+<li>$exists: 取值为true或者false，用于检测文档是否具有某一字段</li>
+<li>$regex: 检测字符串是否与正则表达式相匹配</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// $lt, $lte, $gt , $gte 只能用于数字和字符串</span></div><div class="line">db.find(&#123; <span class="string">"humans.genders"</span>: &#123; $gt: <span class="number">5</span> &#125; &#125;, <span class="function"><span class="keyword">function</span> <span class="params">(err, docs)</span> </span>&#123;</div><div class="line">  <span class="comment">// 这里doc返回将是一个humans.genders值大于5的文档</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// 当使用字符串的时候,将使用字典里字母的顺序进行匹配查找</span></div><div class="line">db.find(&#123; planet: &#123; $gt: <span class="string">'Mercury'</span> &#125;&#125;, <span class="function"><span class="keyword">function</span> <span class="params">(err, docs)</span> </span>&#123;</div><div class="line">  <span class="comment">// 返回的是包含Omicron Persei 8值的文档</span></div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="comment">// $in和$nin 的使用方式相同</span></div><div class="line">db.find(&#123; planet: &#123; $in: [<span class="string">'Earth'</span>, <span class="string">'Jupiter'</span>] &#125;&#125;, <span class="function"><span class="keyword">function</span> <span class="params">(err, docs)</span> </span>&#123;</div><div class="line">  <span class="comment">// 返回含有 Earth 和 Jupiter 值的文档</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// 使用 $exists</span></div><div class="line">db.find(&#123; satellites: &#123; $exists: <span class="keyword">true</span> &#125; &#125;, <span class="function"><span class="keyword">function</span> <span class="params">(err, docs)</span> </span>&#123;</div><div class="line">  <span class="comment">// docs contains only Mars</span></div><div class="line">  <span class="comment">// 返回含有Mars值的文档</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// 同时使用正则和其他匹配方式进行匹配</span></div><div class="line">db.find(&#123; planet: &#123; $regex: /ar/, $nin: [<span class="string">'Jupiter'</span>, <span class="string">'Earth'</span>] &#125; &#125;, <span class="function"><span class="keyword">function</span> <span class="params">(err, docs)</span> </span>&#123;</div><div class="line">  <span class="comment">// docs only contains Mars because Earth was excluded from the match by $nin</span></div><div class="line">  <span class="comment">// 返回结果应该只有包含Mars值的文档,因为$nin匹配方式排除了含有Earth值的文档</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="数组字段"><a href="#数组字段" class="headerlink" title="数组字段"></a>数组字段</h3><p>当你的字段在一个文档里是一个数组时,NeDB首先会尝试去看是不是一个数组,如果是的话会进行精确匹配查找,然后去判断此数组是否使用了具体的比较运算操作方法,如果没有,会对其所有元素进行查找.</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 精确匹配</span></div><div class="line"><span class="selector-tag">db</span><span class="selector-class">.find</span>(&#123; <span class="attribute">satellites</span>: [<span class="string">'Phobos'</span>, <span class="string">'Deimos'</span>] &#125;, <span class="selector-tag">function</span> (err, docs) &#123;</div><div class="line">  <span class="comment">// 返回的是含有Mars值的文档</span></div><div class="line">&#125;)</div><div class="line"><span class="selector-tag">db</span><span class="selector-class">.find</span>(&#123; <span class="attribute">satellites</span>: [<span class="string">'Deimos'</span>, <span class="string">'Phobos'</span>] &#125;, <span class="selector-tag">function</span> (err, docs) &#123;</div><div class="line">  <span class="comment">// 返回空</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>暂时还没有写完</p>
+<p>此文档由本人自己翻译,如果有错误或者翻译不对的地方请留下建议,万分感谢,如有转载者请注明,并加上链接</p>
+<p>此文章原文链接:<a href="http://www.taoyage.net/2016/09/29/NeDB中文文档">http://www.taoyage.net/2016/09/29/NeDB中文文档</a></p>
+<p>此文档原英文文档链接:<a href="https://github.com/louischatriot/nedb#creatingloading-a-database" target="_blank" rel="external">https://github.com/louischatriot/nedb#creatingloading-a-database</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/node嵌入式数据库/" rel="tag">#node嵌入式数据库</a>
+          
+            <a href="/tags/NEDB中文文档/" rel="tag">#NEDB中文文档</a>
+          
+            <a href="/tags/NeDB中文API/" rel="tag">#NeDB中文API</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/28/git常用命令/" rel="next" title="git常用命令">
+                <i class="fa fa-chevron-left"></i> git常用命令
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/09/29/NEDB语法以及使用教程/"
+           data-title="NeDB中文文档" data-url="http://www.taoyage.net/2016/09/29/NEDB语法以及使用教程/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/1.PNG"
+               alt="accord" />
+          <p class="site-author-name" itemprop="name">accord</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/taoyage" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#NeDB简介"><span class="nav-number">1.</span> <span class="nav-text">NeDB简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装NeDB"><span class="nav-number">2.</span> <span class="nav-text">安装NeDB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NeDB-API"><span class="nav-number">3.</span> <span class="nav-text">NeDB API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建-加载一个数据库"><span class="nav-number">3.1.</span> <span class="nav-text">创建/加载一个数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入数据-db-inster-doc-callback"><span class="nav-number">3.2.</span> <span class="nav-text">插入数据(db.inster(doc,callback))</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入多个数组"><span class="nav-number">3.3.</span> <span class="nav-text">插入多个数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库"><span class="nav-number">3.4.</span> <span class="nav-text">数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查找文档-db-find-query-callback"><span class="nav-number">3.5.</span> <span class="nav-text">查找文档(db.find({query},callback))</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#比较运算符-lt-lte-gt-gte-in-nin-ne-exists-regex"><span class="nav-number">3.6.</span> <span class="nav-text">比较运算符($lt, $lte, $gt, $gte, $in, $nin, $ne, $exists, $regex)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组字段"><span class="nav-number">3.7.</span> <span class="nav-text">数组字段</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">accord</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"taoyage"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("Xeqt7MApngE6NFdNtWJ3rivF-gzGzoHsz", "V2ktyBYw89XGbIkusmOEUSSF");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
