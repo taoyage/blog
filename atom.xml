@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.taoyage.net/"/>
-  <updated>2016-09-30T07:19:39.000Z</updated>
+  <updated>2016-09-30T07:22:30.000Z</updated>
   <id>http://www.taoyage.net/</id>
   
   <author>
@@ -17,10 +17,10 @@
   
   <entry>
     <title>NeDB中文文档</title>
-    <link href="http://www.taoyage.net/2016/09/29/NEDB%E8%AF%AD%E6%B3%95%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"/>
-    <id>http://www.taoyage.net/2016/09/29/NEDB语法以及使用教程/</id>
+    <link href="http://www.taoyage.net/2016/09/29/NeDB%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/"/>
+    <id>http://www.taoyage.net/2016/09/29/NeDB中文文档/</id>
     <published>2016-09-29T14:41:15.000Z</published>
-    <updated>2016-09-30T07:19:39.000Z</updated>
+    <updated>2016-09-30T07:22:30.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="NeDB简介"><a href="#NeDB简介" class="headerlink" title="NeDB简介"></a>NeDB简介</h2><p>NeDB是一款用于Node.js开发的NoSQL嵌入式内存数据库,完全采用javascript开发,可以使用在html5桌面应用程序,以及浏览器端应用,其api是MongoDB的一个子集,具有简单,轻量,速度快等特点.</p>
 <h2 id="安装NeDB"><a href="#安装NeDB" class="headerlink" title="安装NeDB"></a>安装NeDB</h2><p>NeDB可以通过npm和bower来进行安装</p>
