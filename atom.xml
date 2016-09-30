@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.taoyage.net/"/>
-  <updated>2016-09-30T07:22:30.000Z</updated>
+  <updated>2016-09-30T07:31:17.000Z</updated>
   <id>http://www.taoyage.net/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.taoyage.net/2016/09/29/NeDB%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/"/>
     <id>http://www.taoyage.net/2016/09/29/NeDB中文文档/</id>
     <published>2016-09-29T14:41:15.000Z</published>
-    <updated>2016-09-30T07:22:30.000Z</updated>
+    <updated>2016-09-30T07:31:17.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="NeDB简介"><a href="#NeDB简介" class="headerlink" title="NeDB简介"></a>NeDB简介</h2><p>NeDB是一款用于Node.js开发的NoSQL嵌入式内存数据库,完全采用javascript开发,可以使用在html5桌面应用程序,以及浏览器端应用,其api是MongoDB的一个子集,具有简单,轻量,速度快等特点.</p>
 <h2 id="安装NeDB"><a href="#安装NeDB" class="headerlink" title="安装NeDB"></a>安装NeDB</h2><p>NeDB可以通过npm和bower来进行安装</p>
@@ -60,7 +60,7 @@
     
     </summary>
     
-      <category term="前端开发" scheme="http://www.taoyage.net/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+      <category term="后台开发" scheme="http://www.taoyage.net/categories/%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91/"/>
     
     
       <category term="node嵌入式数据库" scheme="http://www.taoyage.net/tags/node%E5%B5%8C%E5%85%A5%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
