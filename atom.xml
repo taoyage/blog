@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.taoyage.net/"/>
-  <updated>2016-10-01T16:29:29.000Z</updated>
+  <updated>2016-10-08T06:54:15.000Z</updated>
   <id>http://www.taoyage.net/</id>
   
   <author>
@@ -14,6 +14,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>jsonp函数实现方法</title>
+    <link href="http://www.taoyage.net/2016/10/08/jsonp%E5%87%BD%E6%95%B0%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95/"/>
+    <id>http://www.taoyage.net/2016/10/08/jsonp函数实现方法/</id>
+    <published>2016-10-08T06:47:44.000Z</published>
+    <updated>2016-10-08T06:54:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="jsonp"><a href="#jsonp" class="headerlink" title="jsonp"></a>jsonp</h2><p>jsonp是一种跨域的请求方式,可以从其他域名获取数据,即跨域读取数据。</p>
+<h2 id="jsonp函数的实现方法"><a href="#jsonp函数的实现方法" class="headerlink" title="jsonp函数的实现方法"></a>jsonp函数的实现方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">* @Author: accord</div><div class="line">* @Date:   2016-10-08 11:17:21</div><div class="line">* @Last Modified by:   accord</div><div class="line">* @Last Modified time: 2016-10-08 15:46:18</div><div class="line">*/</div><div class="line"><span class="meta"></span></div><div class="line">'use strict';</div><div class="line"></div><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">window,document</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> jsonp = <span class="function"><span class="keyword">function</span>(<span class="params">url,data,callback</span>)</span>&#123;</div><div class="line"></div><div class="line">		<span class="comment">/*随机一个callback函数名 */</span></div><div class="line">		<span class="keyword">var</span> callbackFuncName = <span class="string">'Callback_'</span> + <span class="built_in">Math</span>.random().toString().replace(<span class="string">'.'</span>,<span class="string">''</span>);</div><div class="line"></div><div class="line">		<span class="comment">/*添加回调函数*/</span></div><div class="line">		<span class="built_in">window</span>[callbackFuncName] = callback;</div><div class="line"></div><div class="line">		<span class="comment">/*分解data对象,拼接成url字符串形式*/</span></div><div class="line"></div><div class="line">		<span class="comment">/* &#123;id:1,name:'taoyage'&#125; =&gt; ?id=1&amp;name=taoyage&amp; */</span></div><div class="line">		<span class="keyword">var</span> querystring = url.indexOf(<span class="string">'?'</span>)== <span class="number">-1</span> ? <span class="string">'?'</span>:<span class="string">'&amp;'</span>;</div><div class="line"></div><div class="line">		<span class="keyword">for</span>(<span class="keyword">var</span> key <span class="keyword">in</span> data)&#123;</div><div class="line">			querystring += key + <span class="string">'='</span> + data[key] + <span class="string">'&amp;'</span>;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="comment">/*进行拼接*/</span></div><div class="line">		<span class="comment">/* ?id=1&amp;name=taoyage&amp;callback=jsonCallback_1231313 */</span></div><div class="line">		querystring += <span class="string">'callback='</span> + callbackFuncName;</div><div class="line"></div><div class="line">		<span class="comment">/*创建script标签*/</span></div><div class="line">		<span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</div><div class="line">		script.src = url + querystring;</div><div class="line">		<span class="built_in">document</span>.body.appendChild(script);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="built_in">window</span>.$jsonp = jsonp;</div><div class="line"></div><div class="line">&#125;)(<span class="built_in">window</span>,<span class="built_in">document</span>);</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;jsonp&quot;&gt;&lt;a href=&quot;#jsonp&quot; class=&quot;headerlink&quot; title=&quot;jsonp&quot;&gt;&lt;/a&gt;jsonp&lt;/h2&gt;&lt;p&gt;jsonp是一种跨域的请求方式,可以从其他域名获取数据,即跨域读取数据。&lt;/p&gt;
+&lt;h2 id=&quot;jsonp函数的实
+    
+    </summary>
+    
+      <category term="前端开发" scheme="http://www.taoyage.net/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="-- jsonp -- jsonp函数实现方法 -- javascript实现jsonp函数" scheme="http://www.taoyage.net/tags/jsonp-jsonp%E5%87%BD%E6%95%B0%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95-javascript%E5%AE%9E%E7%8E%B0jsonp%E5%87%BD%E6%95%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>NeDB中文文档</title>
