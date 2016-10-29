@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://www.taoyage.net/2016/10/08/jsonp%E5%87%BD%E6%95%B0%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95/</loc>
-    <lastmod>2016-10-08T06:54:15.000Z</lastmod>
+    <lastmod>2016-10-29T14:14:21.000Z</lastmod>
     <data>
         <display>
         <title>jsonp函数实现方法</title>
@@ -16,7 +16,27 @@
          
            
              
-              <breadCrumb title="前端开发" url="http://www.taoyage.net/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+              <breadCrumb title="web前端" url="http://www.taoyage.net/categories/web%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.taoyage.net/2016/10/29/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/</loc>
+    <lastmod>2016-10-29T14:14:08.000Z</lastmod>
+    <data>
+        <display>
+        <title>前端优化方法</title>
+        <pubTime>2016-10-29T14:12:06.000Z</pubTime>
+        
+        <tag>前端优化</tag>
+         
+         
+           
+             
+              <breadCrumb title="web前端" url="http://www.taoyage.net/categories/web%E5%89%8D%E7%AB%AF/"/>
           
         </display>
     </data>
