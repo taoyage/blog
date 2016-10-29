@@ -1,7 +1,7 @@
 ---
 title: jsonp函数实现方法
 date: 2016-10-08 15:47:44
-categories: 前端开发
+categories: web前端
 tags: 
   -- jsonp
   -- jsonp函数实现方法
