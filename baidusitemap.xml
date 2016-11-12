@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://www.taoyage.net/2016/11/12/sublime%E5%89%8D%E7%AB%AF%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6/</loc>
+    <lastmod>2016-11-12T06:53:16.000Z</lastmod>
+    <data>
+        <display>
+        <title>sublime前端常用插件</title>
+        <pubTime>2016-11-12T06:20:45.000Z</pubTime>
+        
+        <tag>-- sublime -- sublime插件</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端开发工具" url="http://www.taoyage.net/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.taoyage.net/2016/10/29/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/</loc>
     <lastmod>2016-10-30T05:24:34.000Z</lastmod>
     <data>
@@ -123,26 +143,6 @@
            
              
               <breadCrumb title="前端开发工具" url="http://www.taoyage.net/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.taoyage.net/2016/09/24/hello-world/</loc>
-    <lastmod>2016-09-27T04:52:16.000Z</lastmod>
-    <data>
-        <display>
-        <title>Hello World</title>
-        <pubTime>2016-09-24T10:53:20.000Z</pubTime>
-        
-        <tag>aaa</tag>
-         
-         
-           
-             
-              <breadCrumb title="aaaa" url="http://www.taoyage.net/categories/aaaa/"/>
           
         </display>
     </data>
