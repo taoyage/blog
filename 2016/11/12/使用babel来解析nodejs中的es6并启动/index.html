@@ -100,7 +100,7 @@ $ npm install --save-dev babel-cli
 安装完成后,在你的package.json文件里应该会出现像下面这样的:
 123&quot;devDependencies&quot;: &amp;#123;   	&quot;babel-cli&quot;: &quot;^6.18.0&quot;&amp;#125;
 创建babel配置文件.babelrc使用babel需要在根目录下添加.babelrc配">
-<meta property="og:updated_time" content="2016-11-12T14:59:02.000Z">
+<meta property="og:updated_time" content="2016-11-12T15:01:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用babel启动node并解析es6语法">
 <meta name="twitter:description" content="babel安装使用前先安装babel-cli
@@ -351,10 +351,10 @@ $ npm install --save-dev babel-cli
 <figure class="highlight xquery"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="string">"devDependencies"</span>: &#123;</div><div class="line">   	<span class="string">"babel-cli"</span>: <span class="string">"^6.18.0"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="创建babel配置文件-babelrc"><a href="#创建babel配置文件-babelrc" class="headerlink" title="创建babel配置文件.babelrc"></a>创建babel配置文件.babelrc</h2><p>使用babel需要在根目录下添加.babelrc配置文件,这个文件用来设置转码的规则和插件,<br>像下面这样我配置了es2015和react的转码</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"presets"</span>: [</div><div class="line">    <span class="string">"es2015"</span>,</div><div class="line">    <span class="string">"react"</span></div><div class="line">  ],</div><div class="line">  <span class="attr">"plugins"</span>: []</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>使用前需要安装<br><figure class="highlight q"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ npm install --<span class="built_in">save</span>-<span class="built_in">dev</span> babel-preset-es2015</div><div class="line"></div><div class="line">$ npm install --<span class="built_in">save</span>-<span class="built_in">dev</span> babel-preset-react</div></pre></td></tr></table></figure></p>
-<h3 id="启动用es6写的nodejs"><a href="#启动用es6写的nodejs" class="headerlink" title="启动用es6写的nodejs"></a>启动用es6写的nodejs</h3><p>babel-cli里自带babel-node命令<br>假设你的node入口文件名为server.js,在package.json进行如下配置:</p>
+<p>使用前需要安装<br><figure class="highlight q"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ npm install --<span class="built_in">save</span>-<span class="built_in">dev</span> babel-preset-es2015</div><div class="line">$ npm install --<span class="built_in">save</span>-<span class="built_in">dev</span> babel-preset-react</div></pre></td></tr></table></figure></p>
+<h2 id="启动用es6写的nodejs"><a href="#启动用es6写的nodejs" class="headerlink" title="启动用es6写的nodejs"></a>启动用es6写的nodejs</h2><p>babel-cli里自带babel-node命令<br>假设你的node入口文件名为server.js,在package.json进行如下配置:</p>
 <figure class="highlight xquery"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="string">"scripts"</span>: &#123;</div><div class="line">  <span class="string">"start"</span>: <span class="string">"babel-node server.js"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>最后命令通过 <code>$ npm start</code> 来启动nodejs</p>
+<p>最后通过 <code>$ npm start</code> 命令来启动nodejs</p>
 
       
     </div>
@@ -528,7 +528,7 @@ $ npm install --save-dev babel-cli
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#babel安装"><span class="nav-number">1.</span> <span class="nav-text">babel安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建babel配置文件-babelrc"><span class="nav-number">2.</span> <span class="nav-text">创建babel配置文件.babelrc</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#启动用es6写的nodejs"><span class="nav-number">2.1.</span> <span class="nav-text">启动用es6写的nodejs</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#babel安装"><span class="nav-number">1.</span> <span class="nav-text">babel安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建babel配置文件-babelrc"><span class="nav-number">2.</span> <span class="nav-text">创建babel配置文件.babelrc</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动用es6写的nodejs"><span class="nav-number">3.</span> <span class="nav-text">启动用es6写的nodejs</span></a></li></ol></div>
             
           </div>
         </section>
