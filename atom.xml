@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.taoyage.net/"/>
-  <updated>2016-11-25T08:37:26.000Z</updated>
+  <updated>2016-11-25T08:43:30.000Z</updated>
   <id>http://www.taoyage.net/</id>
   
   <author>
@@ -20,9 +20,9 @@
     <link href="http://www.taoyage.net/2016/11/25/Node%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%E2%80%94%E2%80%94%E5%88%9D%E8%AF%86Node/"/>
     <id>http://www.taoyage.net/2016/11/25/Node学习笔记1——初识Node/</id>
     <published>2016-11-25T06:07:50.000Z</published>
-    <updated>2016-11-25T08:37:26.000Z</updated>
+    <updated>2016-11-25T08:43:30.000Z</updated>
     
-    <content type="html"><![CDATA[<img src="/2016/11/25/Node&#x5B66;&#x4E60;&#x7B14;&#x8BB0;1&#x2014;&#x2014;&#x521D;&#x8BC6;Node/2016/11/25/Node&#x5B66;&#x4E60;&#x7B14;&#x8BB0;1&#x2014;&#x2014;&#x521D;&#x8BC6;Node/&#x521D;&#x8BC6;node.png" alt="&#x521D;&#x8BC6;Nodejs&#x8111;&#x56FE;" title="&#x521D;&#x8BC6;Nodejs&#x8111;&#x56FE;">
+    <content type="html"><![CDATA[<p><img src="/2016/11/25/Node&#x5B66;&#x4E60;&#x7B14;&#x8BB0;1&#x2014;&#x2014;&#x521D;&#x8BC6;Node/./&#x521D;&#x8BC6;node.png" alt="&#x521D;&#x8BC6;Nodejs&#x8111;&#x56FE;"></p>
 <h2 id="&#x4EC0;&#x4E48;&#x662F;NodeJs"><a href="#&#x4EC0;&#x4E48;&#x662F;NodeJs" class="headerlink" title="&#x4EC0;&#x4E48;&#x662F;NodeJs"></a>&#x4EC0;&#x4E48;&#x662F;NodeJs</h2><p>Node.js&#x662F;&#x4E00;&#x4E2A;&#x57FA;&#x4E8E;ChromeV8&#x5F15;&#x64CE;&#x7684;Javascript&#x8FD0;&#x884C;&#x73AF;&#x5883;&#x3002;Node.js&#x4F7F;&#x7528;&#x4E86;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x9A71;&#x52A8;&#x3001;&#x975E;&#x963B;&#x585E;&#x5F0F;IO&#x7684;&#x6A21;&#x578B;&#xFF0C;&#x4F7F;&#x5176;&#x8F7B;&#x91CF;&#x53C8;&#x9AD8;&#x6548;&#x3002;Node.js&#x7684;&#x5305;&#x7BA1;&#x7406;&#x5668;npm&#xFF0C;&#x662F;&#x5168;&#x7403;&#x6700;&#x5927;&#x7684;&#x5F00;&#x6E90;&#x5E93;&#x751F;&#x6001;&#x7CFB;&#x7EDF;&#x3002;&#x7B80;&#x5355;&#x6765;&#x8BF4;Node&#x662F;js&#x7684;&#x4E00;&#x4E2A;&#x865A;&#x62DF;&#x673A;&#xFF08;&#x5E73;&#x53F0;&#xFF09;,&#x80FD;&#x591F;&#x89E3;&#x6790;js&#x4EE3;&#x7801;,&#x4F7F;&#x5176;&#x8FD0;&#x884C;&#x5728;&#x5404;&#x4E2A;&#x5E73;&#x53F0;,&#x8FD9;&#x6709;&#x70B9;&#x7C7B;&#x4F3C;java&#x7684;jvm&#x3002;&#x540C;&#x65F6;Node&#x5E73;&#x53F0;&#x5185;&#x90E8;&#x63D0;&#x4F9B;&#x4E86;&#x5927;&#x91CF;&#x7684;&#x5DE5;&#x5177;&#x5E93;,&#x4F7F;js&#x80FD;&#x4E0E;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x8FDB;&#x884C;&#x4EA4;&#x4E92;,&#x4F8B;&#x5982;&#x8BFB;&#x5199;&#x6587;&#x4EF6;&#x3002;</p>
 <h2 id="NodeJs&#x7684;&#x8BDE;&#x751F;&#x5386;&#x7A0B;"><a href="#NodeJs&#x7684;&#x8BDE;&#x751F;&#x5386;&#x7A0B;" class="headerlink" title="NodeJs&#x7684;&#x8BDE;&#x751F;&#x5386;&#x7A0B;"></a>NodeJs&#x7684;&#x8BDE;&#x751F;&#x5386;&#x7A0B;</h2><ul>
 <li>2009&#x5E74;3&#x6708;&#xFF0C;Ryan Dahl&#x5728;&#x535A;&#x5BA2;&#x5BA3;&#x5E03;&#x521B;&#x5EFA;</li>
@@ -39,7 +39,7 @@
 <li>&#x4E8B;&#x4EF6;&#x4E0E;&#x56DE;&#x8C03;&#x51FD;&#x6570;</li>
 <li>&#x8DE8;&#x5E73;&#x53F0;</li>
 </ul>
-<h2 id="NodeJs&#x7ED3;&#x6784;"><a href="#NodeJs&#x7ED3;&#x6784;" class="headerlink" title="NodeJs&#x7ED3;&#x6784;"></a>NodeJs&#x7ED3;&#x6784;</h2><img src="/2016/11/25/Node&#x5B66;&#x4E60;&#x7B14;&#x8BB0;1&#x2014;&#x2014;&#x521D;&#x8BC6;Node/2016/11/25/Node&#x5B66;&#x4E60;&#x7B14;&#x8BB0;1&#x2014;&#x2014;&#x521D;&#x8BC6;Node/Node_construction.jpeg" alt="Node_construction" title="Node_construction">
+<h2 id="NodeJs&#x7ED3;&#x6784;"><a href="#NodeJs&#x7ED3;&#x6784;" class="headerlink" title="NodeJs&#x7ED3;&#x6784;"></a>NodeJs&#x7ED3;&#x6784;</h2><p><img src="/2016/11/25/Node&#x5B66;&#x4E60;&#x7B14;&#x8BB0;1&#x2014;&#x2014;&#x521D;&#x8BC6;Node/./Node_construction.jpeg" alt="Node_construction"></p>
 <p>&#x4ECE;&#x4E0A;&#x9762;&#x8FD9;&#x5F20;&#x56FE;&#x6765;&#x770B;,NodeJS&#x7684;&#x7ED3;&#x6784;&#x5206;&#x4E3A;3&#x5C42;:</p>
 <ul>
 <li><p>Node standard Libarary(Node.js&#x6807;&#x51C6;&#x5E93;),&#x6E90;&#x7801;&#x5728;lib&#x76EE;&#x5F55;&#x4E0B;,&#x662F;&#x4E00;&#x4E2A;&#x7528;javascript&#x7F16;&#x5199;&#x7684;&#x5E93;,&#x91CC;&#x9762;&#x5305;&#x542B;&#x4E86;http,fs,events,buffer&#x7B49;Nodejs&#x63D0;&#x4F9B;&#x7684;&#x6838;&#x5FC3;&#x6A21;&#x5757;,<br>javascript&#x80FD;&#x591F;&#x901A;&#x8FC7;Api&#x76F4;&#x63A5;&#x53BB;&#x8C03;&#x7528;&#x8FD9;&#x4E9B;&#x6A21;&#x5757;,&#x4F8B;&#x5982;: <code>let fs = require(&apos;fs&apos;)</code> &#x3002;</p>
@@ -59,15 +59,15 @@
 </ul>
 </li>
 </ul>
-<h2 id="NodeJs&#x5728;web&#x4E2D;&#x7684;&#x4F7F;&#x7528;"><a href="#NodeJs&#x5728;web&#x4E2D;&#x7684;&#x4F7F;&#x7528;" class="headerlink" title="NodeJs&#x5728;web&#x4E2D;&#x7684;&#x4F7F;&#x7528;"></a>NodeJs&#x5728;web&#x4E2D;&#x7684;&#x4F7F;&#x7528;</h2><img src="/2016/11/25/Node&#x5B66;&#x4E60;&#x7B14;&#x8BB0;1&#x2014;&#x2014;&#x521D;&#x8BC6;Node/2016/11/25/Node&#x5B66;&#x4E60;&#x7B14;&#x8BB0;1&#x2014;&#x2014;&#x521D;&#x8BC6;Node/web1.png" alt="web&#x5E94;&#x7528;1" title="web&#x5E94;&#x7528;1">
+<h2 id="NodeJs&#x5728;web&#x4E2D;&#x7684;&#x4F7F;&#x7528;"><a href="#NodeJs&#x5728;web&#x4E2D;&#x7684;&#x4F7F;&#x7528;" class="headerlink" title="NodeJs&#x5728;web&#x4E2D;&#x7684;&#x4F7F;&#x7528;"></a>NodeJs&#x5728;web&#x4E2D;&#x7684;&#x4F7F;&#x7528;</h2><p><img src="/2016/11/25/Node&#x5B66;&#x4E60;&#x7B14;&#x8BB0;1&#x2014;&#x2014;&#x521D;&#x8BC6;Node/./web1.png" alt="web&#x5E94;&#x7528;1"></p>
 <p>&#x8FD9;&#x5F20;&#x56FE;&#x662F;&#x628A;Node&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x670D;&#x52A1;&#x5668;&#x6765;&#x5904;&#x7406;&#x6240;&#x6709;&#x7528;&#x6237;&#x7684;&#x63A5;&#x53D7;&#x548C;&#x54CD;&#x5E94;</p>
-<img src="/2016/11/25/Node&#x5B66;&#x4E60;&#x7B14;&#x8BB0;1&#x2014;&#x2014;&#x521D;&#x8BC6;Node/2016/11/25/Node&#x5B66;&#x4E60;&#x7B14;&#x8BB0;1&#x2014;&#x2014;&#x521D;&#x8BC6;Node/web2.png" alt="web&#x5E94;&#x7528;2" title="web&#x5E94;&#x7528;2">
+<p><img src="/2016/11/25/Node&#x5B66;&#x4E60;&#x7B14;&#x8BB0;1&#x2014;&#x2014;&#x521D;&#x8BC6;Node/./web2.png" alt="web&#x5E94;&#x7528;2"></p>
 <p>&#x8FD9;&#x5F20;&#x56FE;&#x662F;&#x628A;Node&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x4E2D;&#x95F4;&#x670D;&#x52A1;&#x5668;&#x6765;&#x7528;,&#x4E3B;&#x8981;&#x662F;&#x8FDB;&#x884C;&#x5206;&#x53D1;&#x7B49;&#x5DE5;&#x4F5C;,&#x5177;&#x4F53;&#x6B65;&#x9AA4;&#x662F;Node&#x6765;&#x63A5;&#x53D7;&#x5BA2;&#x6237;&#x7AEF;&#x4F20;&#x6765;&#x7684;&#x4FE1;&#x606F;,&#x7136;&#x540E;&#x628A;&#x4E8B;&#x4EF6;&#x4EA4;&#x6258;&#x7ED9;&#x4F20;&#x7EDF;java&#x7B49;&#x670D;&#x52A1;&#x5668;&#x6765;&#x5904;&#x7406;,&#x5904;&#x7406;&#x5B8C;&#x540E;&#x8FD4;&#x56DE;&#x7ED9;node&#x670D;&#x52A1;&#x5668;,&#x7136;&#x540E;&#x54CD;&#x5E94;&#x7ED9;&#x5BA2;&#x6237;&#x7AEF;</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;img src=&quot;/2016/11/25/Node&amp;#x5B66;&amp;#x4E60;&amp;#x7B14;&amp;#x8BB0;1&amp;#x2014;&amp;#x2014;&amp;#x521D;&amp;#x8BC6;Node/2016/11/25/Node&amp;#x5B66;&amp;#x4E60;&amp;#x7B14;&amp;#x8B
+      &lt;p&gt;&lt;img src=&quot;/2016/11/25/Node&amp;#x5B66;&amp;#x4E60;&amp;#x7B14;&amp;#x8BB0;1&amp;#x2014;&amp;#x2014;&amp;#x521D;&amp;#x8BC6;Node/./&amp;#x521D;&amp;#x8BC6;node.png&quot; alt=&quot;&amp;#x521D;
     
     </summary>
     
