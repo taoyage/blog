@@ -1,0 +1,825 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="nodejs学习笔记,nodejs异步I/O,nodejs异步原理,nodejs," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="accord" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Nodejs&amp;#x5355;&amp;#x7EBF;&amp;#x7A0B;Node&amp;#x91C7;&amp;#x7528;chrome v8&amp;#x5F15;&amp;#x64CE;&amp;#x5904;&amp;#x7406;javascript&amp;#x811A;&amp;#x672C;,v8&amp;#x5F15;&amp;#x64CE;&amp;#x6700;&amp;#x5927;&amp;#x7684;&amp;#x7279;&amp;#x70B9;&amp;#x5C31;&amp;#x662F;&amp;#x5355">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node学习笔记2——异步I/O">
+<meta property="og:url" content="http://www.taoyage.net/2016/11/30/Node学习笔记2——异步I-O/index.html">
+<meta property="og:site_name" content="accord">
+<meta property="og:description" content="Nodejs&amp;#x5355;&amp;#x7EBF;&amp;#x7A0B;Node&amp;#x91C7;&amp;#x7528;chrome v8&amp;#x5F15;&amp;#x64CE;&amp;#x5904;&amp;#x7406;javascript&amp;#x811A;&amp;#x672C;,v8&amp;#x5F15;&amp;#x64CE;&amp;#x6700;&amp;#x5927;&amp;#x7684;&amp;#x7279;&amp;#x70B9;&amp;#x5C31;&amp;#x662F;&amp;#x5355">
+<meta property="og:image" content="http://www.taoyage.net/2016/11/30/Node学习笔记2——异步I-O/./异步I／O.png">
+<meta property="og:image" content="http://www.taoyage.net/2016/11/30/Node学习笔记2——异步I-O/./event_loop.png">
+<meta property="og:updated_time" content="2016-12-05T08:32:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Node学习笔记2——异步I/O">
+<meta name="twitter:description" content="Nodejs&amp;#x5355;&amp;#x7EBF;&amp;#x7A0B;Node&amp;#x91C7;&amp;#x7528;chrome v8&amp;#x5F15;&amp;#x64CE;&amp;#x5904;&amp;#x7406;javascript&amp;#x811A;&amp;#x672C;,v8&amp;#x5F15;&amp;#x64CE;&amp;#x6700;&amp;#x5927;&amp;#x7684;&amp;#x7279;&amp;#x70B9;&amp;#x5C31;&amp;#x662F;&amp;#x5355">
+<meta name="twitter:image" content="http://www.taoyage.net/2016/11/30/Node学习笔记2——异步I-O/./异步I／O.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://www.taoyage.net/2016/11/30/Node学习笔记2——异步I-O/"/>
+
+  <title> Node学习笔记2——异步I/O | accord </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?d356ff9a4a964d4fc647445db4439faa";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">accord</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">web前端</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Node学习笔记2——异步I/O
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-30T16:40:25+09:00" content="2016-11-30">
+              2016-11-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/后台开发/" itemprop="url" rel="index">
+                    <span itemprop="name">后台开发</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/30/Node学习笔记2——异步I-O/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/30/Node学习笔记2——异步I-O/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/11/30/Node学习笔记2——异步I-O/" class="leancloud_visitors" data-flag-title="Node学习笔记2——异步I/O">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="/2016/11/30/Node&#x5B66;&#x4E60;&#x7B14;&#x8BB0;2&#x2014;&#x2014;&#x5F02;&#x6B65;I-O/./&#x5F02;&#x6B65;I&#xFF0F;O.png" alt="&#x5F02;&#x6B65;I&#xFF0F;O.png"></p>
+<h2 id="Nodejs&#x5355;&#x7EBF;&#x7A0B;"><a href="#Nodejs&#x5355;&#x7EBF;&#x7A0B;" class="headerlink" title="Nodejs&#x5355;&#x7EBF;&#x7A0B;"></a>Nodejs&#x5355;&#x7EBF;&#x7A0B;</h2><p>Node&#x91C7;&#x7528;chrome v8&#x5F15;&#x64CE;&#x5904;&#x7406;javascript&#x811A;&#x672C;,v8&#x5F15;&#x64CE;&#x6700;&#x5927;&#x7684;&#x7279;&#x70B9;&#x5C31;&#x662F;&#x5355;&#x7EBF;&#x7A0B;&#x8FD0;&#x884C;,&#x4E00;&#x6B21;&#x53EA;&#x80FD;&#x8FD0;&#x884C;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;</p>
+<h2 id="&#x8FDB;&#x7A0B;&#x4E0E;&#x7EBF;&#x7A0B;"><a href="#&#x8FDB;&#x7A0B;&#x4E0E;&#x7EBF;&#x7A0B;" class="headerlink" title="&#x8FDB;&#x7A0B;&#x4E0E;&#x7EBF;&#x7A0B;"></a>&#x8FDB;&#x7A0B;&#x4E0E;&#x7EBF;&#x7A0B;</h2><p>&#x8FD9;&#x91CC;&#x8FDB;&#x7A0B;&#x4E0E;&#x7EBF;&#x7A0B;&#x7684;&#x6982;&#x5FF5;&#x5F15;&#x7528;&#x962E;&#x4E00;&#x5CF0;&#x7684;&#x4E00;&#x7BC7;&#x5173;&#x4E8E;&#x8FDB;&#x7A0B;&#x4E0E;&#x7EBF;&#x7A0B;&#x7684;&#x6587;&#x7AE0;,&#x70B9;&#x51FB;&#x53EF;&#x67E5;&#x770B;<a href="http://www.ruanyifeng.com/blog/2013/04/processes_and_threads.html" target="_blank" rel="external">&#x539F;&#x6587;&#x94FE;&#x63A5;</a></p>
+<ol>
+<li><p>&#x8BA1;&#x7B97;&#x673A;&#x7684;&#x6838;&#x5FC3;&#x662F;CPU&#xFF0C;&#x5B83;&#x627F;&#x62C5;&#x4E86;&#x6240;&#x6709;&#x7684;&#x8BA1;&#x7B97;&#x4EFB;&#x52A1;&#x3002;&#x5B83;&#x5C31;&#x50CF;&#x4E00;&#x5EA7;&#x5DE5;&#x5382;&#xFF0C;&#x65F6;&#x523B;&#x5728;&#x8FD0;&#x884C;&#x3002;</p>
+</li>
+<li><p>&#x5047;&#x5B9A;&#x5DE5;&#x5382;&#x7684;&#x7535;&#x529B;&#x6709;&#x9650;&#xFF0C;&#x4E00;&#x6B21;&#x53EA;&#x80FD;&#x4F9B;&#x7ED9;&#x4E00;&#x4E2A;&#x8F66;&#x95F4;&#x4F7F;&#x7528;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x4E00;&#x4E2A;&#x8F66;&#x95F4;&#x5F00;&#x5DE5;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5176;&#x4ED6;&#x8F66;&#x95F4;&#x90FD;&#x5FC5;&#x987B;&#x505C;&#x5DE5;&#x3002;&#x80CC;&#x540E;&#x7684;&#x542B;&#x4E49;&#x5C31;&#x662F;&#xFF0C;&#x5355;&#x4E2A;CPU&#x4E00;&#x6B21;&#x53EA;&#x80FD;&#x8FD0;&#x884C;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#x3002;</p>
+</li>
+<li><p>&#x8FDB;&#x7A0B;&#x5C31;&#x597D;&#x6BD4;&#x5DE5;&#x5382;&#x7684;&#x8F66;&#x95F4;&#xFF0C;&#x5B83;&#x4EE3;&#x8868;CPU&#x6240;&#x80FD;&#x5904;&#x7406;&#x7684;&#x5355;&#x4E2A;&#x4EFB;&#x52A1;&#x3002;&#x4EFB;&#x4E00;&#x65F6;&#x523B;&#xFF0C;CPU&#x603B;&#x662F;&#x8FD0;&#x884C;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#xFF0C;&#x5176;&#x4ED6;&#x8FDB;&#x7A0B;&#x5904;&#x4E8E;&#x975E;&#x8FD0;&#x884C;&#x72B6;&#x6001;&#x3002;</p>
+</li>
+<li><p>&#x4E00;&#x4E2A;&#x8F66;&#x95F4;&#x91CC;&#xFF0C;&#x53EF;&#x4EE5;&#x6709;&#x5F88;&#x591A;&#x5DE5;&#x4EBA;&#x3002;&#x4ED6;&#x4EEC;&#x534F;&#x540C;&#x5B8C;&#x6210;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#x3002;</p>
+</li>
+<li><p>&#x7EBF;&#x7A0B;&#x5C31;&#x597D;&#x6BD4;&#x8F66;&#x95F4;&#x91CC;&#x7684;&#x5DE5;&#x4EBA;&#x3002;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x53EF;&#x4EE5;&#x5305;&#x62EC;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#x3002;</p>
+</li>
+<li><p>&#x8F66;&#x95F4;&#x7684;&#x7A7A;&#x95F4;&#x662F;&#x5DE5;&#x4EBA;&#x4EEC;&#x5171;&#x4EAB;&#x7684;&#xFF0C;&#x6BD4;&#x5982;&#x8BB8;&#x591A;&#x623F;&#x95F4;&#x662F;&#x6BCF;&#x4E2A;&#x5DE5;&#x4EBA;&#x90FD;&#x53EF;&#x4EE5;&#x8FDB;&#x51FA;&#x7684;&#x3002;&#x8FD9;&#x8C61;&#x5F81;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x7684;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x662F;&#x5171;&#x4EAB;&#x7684;&#xFF0C;&#x6BCF;&#x4E2A;&#x7EBF;&#x7A0B;&#x90FD;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x8FD9;&#x4E9B;&#x5171;&#x4EAB;&#x5185;&#x5B58;</p>
+</li>
+<li><p>&#x53EF;&#x662F;&#xFF0C;&#x6BCF;&#x95F4;&#x623F;&#x95F4;&#x7684;&#x5927;&#x5C0F;&#x4E0D;&#x540C;&#xFF0C;&#x6709;&#x4E9B;&#x623F;&#x95F4;&#x6700;&#x591A;&#x53EA;&#x80FD;&#x5BB9;&#x7EB3;&#x4E00;&#x4E2A;&#x4EBA;&#xFF0C;&#x6BD4;&#x5982;&#x5395;&#x6240;&#x3002;&#x91CC;&#x9762;&#x6709;&#x4EBA;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5176;&#x4ED6;&#x4EBA;&#x5C31;&#x4E0D;&#x80FD;&#x8FDB;&#x53BB;&#x4E86;&#x3002;&#x8FD9;&#x4EE3;&#x8868;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x4F7F;&#x7528;&#x67D0;&#x4E9B;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x65F6;&#xFF0C;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x5FC5;&#x987B;&#x7B49;&#x5B83;&#x7ED3;&#x675F;&#xFF0C;&#x624D;&#x80FD;&#x4F7F;&#x7528;&#x8FD9;&#x4E00;&#x5757;&#x5185;&#x5B58;</p>
+</li>
+<li><p>&#x4E00;&#x4E2A;&#x9632;&#x6B62;&#x4ED6;&#x4EBA;&#x8FDB;&#x5165;&#x7684;&#x7B80;&#x5355;&#x65B9;&#x6CD5;&#xFF0C;&#x5C31;&#x662F;&#x95E8;&#x53E3;&#x52A0;&#x4E00;&#x628A;&#x9501;&#x3002;&#x5148;&#x5230;&#x7684;&#x4EBA;&#x9501;&#x4E0A;&#x95E8;&#xFF0C;&#x540E;&#x5230;&#x7684;&#x4EBA;&#x770B;&#x5230;&#x4E0A;&#x9501;&#xFF0C;&#x5C31;&#x5728;&#x95E8;&#x53E3;&#x6392;&#x961F;&#xFF0C;&#x7B49;&#x9501;&#x6253;&#x5F00;&#x518D;&#x8FDB;&#x53BB;&#x3002;&#x8FD9;&#x5C31;&#x53EB;&#x201D;&#x4E92;&#x65A5;&#x9501;&#x201D;&#xFF08;Mutual exclusion&#xFF0C;&#x7F29;&#x5199; Mutex&#xFF09;&#xFF0C;&#x9632;&#x6B62;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#x540C;&#x65F6;&#x8BFB;&#x5199;&#x67D0;&#x4E00;&#x5757;&#x5185;&#x5B58;&#x533A;&#x57DF;&#x3002;</p>
+</li>
+<li><p>&#x8FD8;&#x6709;&#x4E9B;&#x623F;&#x95F4;&#xFF0C;&#x53EF;&#x4EE5;&#x540C;&#x65F6;&#x5BB9;&#x7EB3;n&#x4E2A;&#x4EBA;&#xFF0C;&#x6BD4;&#x5982;&#x53A8;&#x623F;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x5982;&#x679C;&#x4EBA;&#x6570;&#x5927;&#x4E8E;n&#xFF0C;&#x591A;&#x51FA;&#x6765;&#x7684;&#x4EBA;&#x53EA;&#x80FD;&#x5728;&#x5916;&#x9762;&#x7B49;&#x7740;&#x3002;&#x8FD9;&#x597D;&#x6BD4;&#x67D0;&#x4E9B;&#x5185;&#x5B58;&#x533A;&#x57DF;&#xFF0C;&#x53EA;&#x80FD;&#x4F9B;&#x7ED9;&#x56FA;&#x5B9A;&#x6570;&#x76EE;&#x7684;&#x7EBF;&#x7A0B;&#x4F7F;&#x7528;&#x3002;</p>
+</li>
+<li><p>&#x8FD9;&#x65F6;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#xFF0C;&#x5C31;&#x662F;&#x5728;&#x95E8;&#x53E3;&#x6302;n&#x628A;&#x94A5;&#x5319;&#x3002;&#x8FDB;&#x53BB;&#x7684;&#x4EBA;&#x5C31;&#x53D6;&#x4E00;&#x628A;&#x94A5;&#x5319;&#xFF0C;&#x51FA;&#x6765;&#x65F6;&#x518D;&#x628A;&#x94A5;&#x5319;&#x6302;&#x56DE;&#x539F;&#x5904;&#x3002;&#x540E;&#x5230;&#x7684;&#x4EBA;&#x53D1;&#x73B0;&#x94A5;&#x5319;&#x67B6;&#x7A7A;&#x4E86;&#xFF0C;&#x5C31;&#x77E5;&#x9053;&#x5FC5;&#x987B;&#x5728;&#x95E8;&#x53E3;&#x6392;&#x961F;&#x7B49;&#x7740;&#x4E86;&#x3002;&#x8FD9;&#x79CD;&#x505A;&#x6CD5;&#x53EB;&#x505A;&#x201D;&#x4FE1;&#x53F7;&#x91CF;&#x201D;&#xFF08;Semaphore&#xFF09;&#xFF0C;&#x7528;&#x6765;&#x4FDD;&#x8BC1;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#x4E0D;&#x4F1A;&#x4E92;&#x76F8;&#x51B2;&#x7A81;&#x3002;<br>&#x4E0D;&#x96BE;&#x770B;&#x51FA;&#xFF0C;mutex&#x662F;semaphore&#x7684;&#x4E00;&#x79CD;&#x7279;&#x6B8A;&#x60C5;&#x51B5;&#xFF08;n=1&#x65F6;&#xFF09;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x5B8C;&#x5168;&#x53EF;&#x4EE5;&#x7528;&#x540E;&#x8005;&#x66FF;&#x4EE3;&#x524D;&#x8005;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x56E0;&#x4E3A;mutex&#x8F83;&#x4E3A;&#x7B80;&#x5355;&#xFF0C;&#x4E14;&#x6548;&#x7387;&#x9AD8;&#xFF0C;&#x6240;&#x4EE5;&#x5728;&#x5FC5;&#x987B;&#x4FDD;&#x8BC1;&#x8D44;&#x6E90;&#x72EC;&#x5360;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x8FD8;&#x662F;&#x91C7;&#x7528;&#x8FD9;&#x79CD;&#x8BBE;&#x8BA1;&#x3002;</p>
+</li>
+<li><p>&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7684;&#x8BBE;&#x8BA1;&#xFF0C;&#x56E0;&#x6B64;&#x53EF;&#x4EE5;&#x5F52;&#x7ED3;&#x4E3A;&#x4E09;&#x70B9;&#xFF1A;<br>&#xFF08;1&#xFF09;&#x4EE5;&#x591A;&#x8FDB;&#x7A0B;&#x5F62;&#x5F0F;&#xFF0C;&#x5141;&#x8BB8;&#x591A;&#x4E2A;&#x4EFB;&#x52A1;&#x540C;&#x65F6;&#x8FD0;&#x884C;&#xFF1B;<br>&#xFF08;2&#xFF09;&#x4EE5;&#x591A;&#x7EBF;&#x7A0B;&#x5F62;&#x5F0F;&#xFF0C;&#x5141;&#x8BB8;&#x5355;&#x4E2A;&#x4EFB;&#x52A1;&#x5206;&#x6210;&#x4E0D;&#x540C;&#x7684;&#x90E8;&#x5206;&#x8FD0;&#x884C;&#xFF1B;<br>&#xFF08;3&#xFF09;&#x63D0;&#x4F9B;&#x534F;&#x8C03;&#x673A;&#x5236;&#xFF0C;&#x4E00;&#x65B9;&#x9762;&#x9632;&#x6B62;&#x8FDB;&#x7A0B;&#x4E4B;&#x95F4;&#x548C;&#x7EBF;&#x7A0B;&#x4E4B;&#x95F4;&#x4EA7;&#x751F;&#x51B2;&#x7A81;&#xFF0C;&#x53E6;&#x4E00;&#x65B9;&#x9762;&#x5141;&#x8BB8;&#x8FDB;&#x7A0B;&#x4E4B;&#x95F4;&#x548C;&#x7EBF;&#x7A0B;&#x4E4B;&#x95F4;&#x5171;&#x4EAB;&#x8D44;&#x6E90;&#x3002;</p>
+</li>
+</ol>
+<h2 id="&#x540C;&#x6B65;&#x4E0E;&#x5F02;&#x6B65;"><a href="#&#x540C;&#x6B65;&#x4E0E;&#x5F02;&#x6B65;" class="headerlink" title="&#x540C;&#x6B65;&#x4E0E;&#x5F02;&#x6B65;"></a>&#x540C;&#x6B65;&#x4E0E;&#x5F02;&#x6B65;</h2><p>&#x540C;&#x6B65;&#x5C31;&#x662F;&#x6307;&#x540E;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#x9700;&#x8981;&#x7B49;&#x5F85;&#x524D;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#x5B8C;&#x6210;&#x540E;&#x624D;&#x4F1A;&#x53BB;&#x6267;&#x884C;,&#x6574;&#x4E2A;&#x7A0B;&#x5E8F;&#x7684;&#x6267;&#x884C;&#x987A;&#x5E8F;&#x4E0E;&#x4EFB;&#x52A1;&#x7684;&#x6392;&#x5E8F;&#x4E00;&#x81F4;.</p>
+<p>&#x5F02;&#x6B65;&#x5219;&#x4E0E;&#x540C;&#x6B65;&#x76F8;&#x5BF9;,&#x6BCF;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#x81F3;&#x5C11;&#x6709;&#x4E00;&#x4E2A;callback&#xFF0C;&#x5728;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#xFF0C;&#x4F1A;&#x6267;&#x884C;&#x6B64;&#x4EFB;&#x52A1;&#x7684;&#x56DE;&#x8C03;&#xFF0C;&#x800C;&#x540E;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#x5219;&#x662F;&#x4E0D;&#x7B49;&#x524D;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#x7ED3;&#x675F;&#x5C31;&#x6267;&#x884C;&#xFF0C;&#x6240;&#x4EE5;&#x7A0B;&#x5E8F;&#x7684;&#x6267;&#x884C;&#x987A;&#x5E8F;&#x4E0E;&#x4EFB;&#x52A1;&#x7684;&#x6392;&#x5217;&#x987A;&#x5E8F;&#x662F;&#x4E0D;&#x4E00;&#x81F4;&#x7684;&#x3001;&#x5F02;&#x6B65;&#x7684;&#x3002;</p>
+<p>&#x4E3E;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;<br>&#x4F60;&#x6253;&#x7535;&#x8BDD;&#x7ED9;&#x4F60;&#x79D8;&#x4E66;&#x5E2E;&#x4F60;&#x529E;&#x70B9;&#x4E8B;&#x60C5;,&#x79D8;&#x4E66;&#x56DE;&#x7B54;&#x8BF4;&#x2019;&#x597D;&#xFF0C;&#x7ACB;&#x523B;&#x53BB;&#x529E;&#x2019;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x5728;&#x540C;&#x6B65;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x53EF;&#x80FD;&#x4F1A;&#x56E0;&#x4E3A;&#x79D8;&#x4E66;&#x5728;&#x529E;&#x5B8C;&#x8FD9;&#x4EF6;&#x4E8B;&#x4E4B;&#x524D;,&#x4F60;&#x65E0;&#x6CD5;&#x53BB;&#x505A;&#x4E0B;&#x9762;&#x7684;&#x4E00;&#x4EF6;&#x4E8B;,&#x4F60;&#x53EF;&#x4EE5;&#x505A;&#x7684;&#x5C31;&#x662F;&#x7B49;&#x7740;&#x79D8;&#x4E66;&#x505A;&#x5B8C;&#x4F60;&#x4EA4;&#x5F85;&#x7684;&#x4E8B;&#x60C5;,&#x7ED9;&#x4F60;&#x7B54;&#x590D;&#x540E;,&#x4F60;&#x624D;&#x53EF;&#x4EE5;&#x7EE7;&#x7EED;&#x53BB;&#x505A;&#x624B;&#x4E0A;&#x7684;&#x5176;&#x4ED6;&#x4E8B;&#x60C5;,&#x800C;&#x5982;&#x679C;&#x662F;&#x5F02;&#x6B65;&#x7684;&#x8BDD;,&#x5728;&#x79D8;&#x4E66;&#x628A;&#x4E8B;&#x60C5;&#x505A;&#x5B8C;&#x4E4B;&#x524D;,&#x4F60;&#x53EF;&#x4EE5;&#x5148;&#x7EE7;&#x7EED;&#x505A;&#x5176;&#x4ED6;&#x4E8B;&#x60C5;,&#x7B49;&#x79D8;&#x4E66;&#x505A;&#x5B8C;&#x4E86;&#x81EA;&#x7136;&#x4F1A;&#x901A;&#x77E5;&#x4F60;&#x4E00;&#x58F0;&#x3002;</p>
+<h2 id="Node&#x4E2D;&#x7684;&#x5F02;&#x6B65;&#x5B9E;&#x73B0;"><a href="#Node&#x4E2D;&#x7684;&#x5F02;&#x6B65;&#x5B9E;&#x73B0;" class="headerlink" title="Node&#x4E2D;&#x7684;&#x5F02;&#x6B65;&#x5B9E;&#x73B0;"></a>Node&#x4E2D;&#x7684;&#x5F02;&#x6B65;&#x5B9E;&#x73B0;</h2><p><img src="/2016/11/30/Node&#x5B66;&#x4E60;&#x7B14;&#x8BB0;2&#x2014;&#x2014;&#x5F02;&#x6B65;I-O/./event_loop.png" alt="event_loop"></p>
+<p>&#x5728;&#x4E0A;&#x56FE;&#x4E2D;,&#x6211;&#x4EEC;&#x770B;&#x5230;node&#x5C06;&#x5F02;&#x6B65;&#x4EFB;&#x52A1;&#x4E22;&#x5230;&#x4E86;&#x4E8B;&#x4EF6;&#x961F;&#x5217;&#x5F53;&#x4E2D;,&#x800C;&#x4E8B;&#x4EF6;&#x5FAA;&#x73AF;&#x4E0D;&#x65AD;&#x7684;&#x68C0;&#x67E5;&#x4E8B;&#x4EF6;&#xFF0C;&#x5F53;&#x53D1;&#x73B0;&#x6709;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x65F6;,&#x4F1A;&#x4ECE;&#x7EBF;&#x7A0B;&#x6C60;&#x4E2D;&#x63D0;&#x53D6;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x5E76;&#x6267;&#x884C;&#x5904;&#x7406;&#x8BE5;&#x4E8B;&#x4EF6;&#x51FD;&#x6570;,&#x7136;&#x540E;&#x8C03;&#x7528;&#x56DE;&#x8C03;&#x51FD;&#x6570;.</p>
+<h2 id="&#x603B;&#x7ED3;"><a href="#&#x603B;&#x7ED3;" class="headerlink" title="&#x603B;&#x7ED3;"></a>&#x603B;&#x7ED3;</h2><p>&#x518D;&#x603B;&#x7ED3;&#x4E00;&#x4E0B;nodeJS&#x7684;&#x6574;&#x4E2A;&#x6267;&#x884C;&#x8FC7;&#x7A0B;:</p>
+<ul>
+<li>v8&#x5F15;&#x64CE;&#x89E3;&#x6790;javascript&#x811A;&#x672C;.</li>
+<li>&#x89E3;&#x6790;&#x540E;&#x7684;&#x4EE3;&#x7801;&#x8C03;&#x7528;node&#x6838;&#x5FC3;&#x6A21;&#x5757;,&#x5C06;&#x53C2;&#x6570;&#x548C;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x4F20;&#x5165;&#x5230;&#x6838;&#x5FC3;&#x6A21;&#x5757;.</li>
+<li>node&#x4E2D;&#x7684;libuv&#x5E93;&#x8D1F;&#x8D23;node api&#x7684;&#x6267;&#x884C;, &#x5B83;&#x5229;&#x7528;&#x4E8B;&#x4EF6;&#x5FAA;&#x73AF;&#x673A;&#x5236;&#x4ECE;&#x7EBF;&#x7A0B;&#x6C60;&#x4E2D;&#x63D0;&#x53D6;&#x7EBF;&#x7A0B;&#x6765;&#x6267;&#x884C;&#x4E8B;&#x4EF6;&#x961F;&#x5217;&#x4E2D;&#x7684;&#x4EFB;&#x52A1;,&#x4EE5;&#x5F02;&#x6B65;&#x7684;&#x65B9;&#x5F0F;&#x5C06;&#x4EFB;&#x52A1;&#x8FD4;&#x56DE;&#x7ED9;v8&#x5F15;&#x64CE;.</li>
+<li>v8&#x5F15;&#x64CE;&#x5C06;&#x7ED3;&#x679C;&#x8FD4;&#x56DE;&#x7ED9;&#x5BA2;&#x6237;&#x7AEF;</li>
+</ul>
+<p>&#x4E0A;&#x4E00;&#x7AE0;&#x4E2D;&#x7B80;&#x5355;&#x7684;&#x63D0;&#x5230;&#x8FC7;libuv&#x5E93;&#x662F;&#x4E00;&#x4E2A;&#x7528;c&#x8BED;&#x8A00;&#x5B9E;&#x73B0;&#x7684;&#x5E93;,&#x5B83;&#x4E3A;Nodejs&#x63D0;&#x4F9B;&#x7684;&#x8DE8;&#x5E73;&#x53F0;&#x7684;&#x64CD;&#x4F5C;,&#x5728;&#x5176;&#x5185;&#x90E8;&#x63D0;&#x4F9B;&#x4E86;&#x4E8B;&#x4EF6;&#x5FAA;&#x73AF;(Event Loop),&#x7EBF;&#x7A0B;&#x6C60;,&#x5F02;&#x6B65;I/O&#x7B49;&#x529F;&#x80FD;&#x3002;</p>
+<p>&#x5728;&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;&#x4E2D;&#x56E0;&#x4E3A;&#x65F6;&#x95F4;&#x5173;&#x7CFB;,&#x5BF9;node&#x7684;&#x5F02;&#x6B65;I/O&#x7684;&#x77E5;&#x8BC6;&#x70B9;&#x4ECB;&#x7ECD;&#x7684;&#x5E76;&#x4E0D;&#x5B8C;&#x6574;,&#x4E4B;&#x540E;&#x4F1A;&#x8865;&#x5168;.<br>&#x53E6;&#x5916;&#x672C;&#x4EBA;&#x4E5F;&#x53EA;&#x662F;&#x4E00;&#x4E2A;node&#x521D;&#x5B66;&#x8005;,&#x5982;&#x679C;&#x6587;&#x7AE0;&#x4E2D;&#x6709;&#x9519;&#x8BEF;&#x7684;&#x5730;&#x65B9;,&#x6216;&#x8005;&#x6211;&#x5BF9;node&#x7684;&#x7406;&#x89E3;&#x6709;&#x8BEF;&#x7684;&#x8BDD;&#x671B;&#x9AD8;&#x624B;&#x7559;&#x8A00;&#x6307;&#x70B9;&#x4E00;&#x4E8C;,&#x8C22;&#x8C22;&#xFF01;</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/nodejs学习笔记/" rel="tag">#nodejs学习笔记</a>
+          
+            <a href="/tags/nodejs异步I-O/" rel="tag">#nodejs异步I/O</a>
+          
+            <a href="/tags/nodejs异步原理/" rel="tag">#nodejs异步原理</a>
+          
+            <a href="/tags/nodejs/" rel="tag">#nodejs</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/25/Node学习笔记1——初识Node/" rel="next" title="Node学习笔记1——初识NodeJs">
+                <i class="fa fa-chevron-left"></i> Node学习笔记1——初识NodeJs
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/11/30/Node学习笔记2——异步I-O/"
+           data-title="Node学习笔记2——异步I/O" data-url="http://www.taoyage.net/2016/11/30/Node学习笔记2——异步I-O/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/1.PNG"
+               alt="accord" />
+          <p class="site-author-name" itemprop="name">accord</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/taoyage" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Nodejs单线程"><span class="nav-number">1.</span> <span class="nav-text">Nodejs单线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程与线程"><span class="nav-number">2.</span> <span class="nav-text">进程与线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#同步与异步"><span class="nav-number">3.</span> <span class="nav-text">同步与异步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Node中的异步实现"><span class="nav-number">4.</span> <span class="nav-text">Node中的异步实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">accord</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"taoyage"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("Xeqt7MApngE6NFdNtWJ3rivF-gzGzoHsz", "V2ktyBYw89XGbIkusmOEUSSF");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
