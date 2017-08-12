@@ -86,22 +86,18 @@
 
 
 
-<meta name="description" content="&amp;#x521D;&amp;#x59CB;&amp;#x5316;&amp;#x672C;&amp;#x5730;git&amp;#x4ED3;&amp;#x5E93;$ git init
-&amp;#x67E5;&amp;#x770B;&amp;#x5F53;&amp;#x524D;&amp;#x4ED3;&amp;#x5E93;&amp;#x72B6;&amp;#x6001;$ git status
-&amp;#x67E5;&amp;#x770B;&amp;#x4FEE;&amp;#x6539;&amp;#x65E5;&amp;#x5FD7;$ git">
+<meta name="description" content="初始化本地git仓库$ git init 查看当前仓库状态$ git status 查看修改日志$ git log 恢复到某个版本$ git reset --hard HEAD(HEAD 指的是通过$ git log命令来获取的commit的后6位值) 添加所有文件到缓存$ git add --all 提交修改信息$ git commit -m &amp;quot;修改信息&amp;quot; 推送到远程仓库$">
+<meta name="keywords" content="-- git -- github">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git常用命令">
 <meta property="og:url" content="http://www.taoyage.net/2016/09/28/git常用命令/index.html">
 <meta property="og:site_name" content="accord">
-<meta property="og:description" content="&amp;#x521D;&amp;#x59CB;&amp;#x5316;&amp;#x672C;&amp;#x5730;git&amp;#x4ED3;&amp;#x5E93;$ git init
-&amp;#x67E5;&amp;#x770B;&amp;#x5F53;&amp;#x524D;&amp;#x4ED3;&amp;#x5E93;&amp;#x72B6;&amp;#x6001;$ git status
-&amp;#x67E5;&amp;#x770B;&amp;#x4FEE;&amp;#x6539;&amp;#x65E5;&amp;#x5FD7;$ git">
+<meta property="og:description" content="初始化本地git仓库$ git init 查看当前仓库状态$ git status 查看修改日志$ git log 恢复到某个版本$ git reset --hard HEAD(HEAD 指的是通过$ git log命令来获取的commit的后6位值) 添加所有文件到缓存$ git add --all 提交修改信息$ git commit -m &amp;quot;修改信息&amp;quot; 推送到远程仓库$">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-09-28T15:07:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git常用命令">
-<meta name="twitter:description" content="&amp;#x521D;&amp;#x59CB;&amp;#x5316;&amp;#x672C;&amp;#x5730;git&amp;#x4ED3;&amp;#x5E93;$ git init
-&amp;#x67E5;&amp;#x770B;&amp;#x5F53;&amp;#x524D;&amp;#x4ED3;&amp;#x5E93;&amp;#x72B6;&amp;#x6001;$ git status
-&amp;#x67E5;&amp;#x770B;&amp;#x4FEE;&amp;#x6539;&amp;#x65E5;&amp;#x5FD7;$ git">
+<meta name="twitter:description" content="初始化本地git仓库$ git init 查看当前仓库状态$ git status 查看修改日志$ git log 恢复到某个版本$ git reset --hard HEAD(HEAD 指的是通过$ git log命令来获取的commit的后6位值) 添加所有文件到缓存$ git add --all 提交修改信息$ git commit -m &amp;quot;修改信息&amp;quot; 推送到远程仓库$">
 
 
 
@@ -276,7 +272,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-28T23:41:04+09:00" content="2016-09-28">
+            <time itemprop="dateCreated" datetime="2016-09-28T23:41:04+08:00" content="2016-09-28">
               2016-09-28
             </time>
           </span>
@@ -339,19 +335,19 @@
       
 
       
-        <h3 id="&#x521D;&#x59CB;&#x5316;&#x672C;&#x5730;git&#x4ED3;&#x5E93;"><a href="#&#x521D;&#x59CB;&#x5316;&#x672C;&#x5730;git&#x4ED3;&#x5E93;" class="headerlink" title="&#x521D;&#x59CB;&#x5316;&#x672C;&#x5730;git&#x4ED3;&#x5E93;"></a>&#x521D;&#x59CB;&#x5316;&#x672C;&#x5730;git&#x4ED3;&#x5E93;</h3><p><code>$ git init</code></p>
-<h3 id="&#x67E5;&#x770B;&#x5F53;&#x524D;&#x4ED3;&#x5E93;&#x72B6;&#x6001;"><a href="#&#x67E5;&#x770B;&#x5F53;&#x524D;&#x4ED3;&#x5E93;&#x72B6;&#x6001;" class="headerlink" title="&#x67E5;&#x770B;&#x5F53;&#x524D;&#x4ED3;&#x5E93;&#x72B6;&#x6001;"></a>&#x67E5;&#x770B;&#x5F53;&#x524D;&#x4ED3;&#x5E93;&#x72B6;&#x6001;</h3><p><code>$ git status</code></p>
-<h3 id="&#x67E5;&#x770B;&#x4FEE;&#x6539;&#x65E5;&#x5FD7;"><a href="#&#x67E5;&#x770B;&#x4FEE;&#x6539;&#x65E5;&#x5FD7;" class="headerlink" title="&#x67E5;&#x770B;&#x4FEE;&#x6539;&#x65E5;&#x5FD7;"></a>&#x67E5;&#x770B;&#x4FEE;&#x6539;&#x65E5;&#x5FD7;</h3><p><code>$ git log</code></p>
-<h3 id="&#x6062;&#x590D;&#x5230;&#x67D0;&#x4E2A;&#x7248;&#x672C;"><a href="#&#x6062;&#x590D;&#x5230;&#x67D0;&#x4E2A;&#x7248;&#x672C;" class="headerlink" title="&#x6062;&#x590D;&#x5230;&#x67D0;&#x4E2A;&#x7248;&#x672C;"></a>&#x6062;&#x590D;&#x5230;&#x67D0;&#x4E2A;&#x7248;&#x672C;</h3><p><code>$ git reset --hard HEAD</code>(HEAD &#x6307;&#x7684;&#x662F;&#x901A;&#x8FC7;<code>$ git log</code>&#x547D;&#x4EE4;&#x6765;&#x83B7;&#x53D6;&#x7684;commit&#x7684;&#x540E;6&#x4F4D;&#x503C;)</p>
-<h3 id="&#x6DFB;&#x52A0;&#x6240;&#x6709;&#x6587;&#x4EF6;&#x5230;&#x7F13;&#x5B58;"><a href="#&#x6DFB;&#x52A0;&#x6240;&#x6709;&#x6587;&#x4EF6;&#x5230;&#x7F13;&#x5B58;" class="headerlink" title="&#x6DFB;&#x52A0;&#x6240;&#x6709;&#x6587;&#x4EF6;&#x5230;&#x7F13;&#x5B58;"></a>&#x6DFB;&#x52A0;&#x6240;&#x6709;&#x6587;&#x4EF6;&#x5230;&#x7F13;&#x5B58;</h3><p><code>$ git add --all</code></p>
-<h3 id="&#x63D0;&#x4EA4;&#x4FEE;&#x6539;&#x4FE1;&#x606F;"><a href="#&#x63D0;&#x4EA4;&#x4FEE;&#x6539;&#x4FE1;&#x606F;" class="headerlink" title="&#x63D0;&#x4EA4;&#x4FEE;&#x6539;&#x4FE1;&#x606F;"></a>&#x63D0;&#x4EA4;&#x4FEE;&#x6539;&#x4FE1;&#x606F;</h3><p><code>$ git commit -m &quot;&#x4FEE;&#x6539;&#x4FE1;&#x606F;&quot;</code></p>
-<h3 id="&#x63A8;&#x9001;&#x5230;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;"><a href="#&#x63A8;&#x9001;&#x5230;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;" class="headerlink" title="&#x63A8;&#x9001;&#x5230;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;"></a>&#x63A8;&#x9001;&#x5230;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;</h3><p><code>$ git push -u origin master</code></p>
-<h3 id="&#x4ECE;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;&#x83B7;&#x53D6;&#x6570;&#x636E;"><a href="#&#x4ECE;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;&#x83B7;&#x53D6;&#x6570;&#x636E;" class="headerlink" title="&#x4ECE;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;&#x83B7;&#x53D6;&#x6570;&#x636E;"></a>&#x4ECE;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;&#x83B7;&#x53D6;&#x6570;&#x636E;</h3><p><code>$ git pull origin master</code></p>
-<h3 id="&#x5217;&#x51FA;&#x6240;&#x6709;&#x5206;&#x652F;"><a href="#&#x5217;&#x51FA;&#x6240;&#x6709;&#x5206;&#x652F;" class="headerlink" title="&#x5217;&#x51FA;&#x6240;&#x6709;&#x5206;&#x652F;"></a>&#x5217;&#x51FA;&#x6240;&#x6709;&#x5206;&#x652F;</h3><p><code>$ git branch</code></p>
-<h3 id="&#x521B;&#x5EFA;&#x65B0;&#x5206;&#x652F;"><a href="#&#x521B;&#x5EFA;&#x65B0;&#x5206;&#x652F;" class="headerlink" title="&#x521B;&#x5EFA;&#x65B0;&#x5206;&#x652F;"></a>&#x521B;&#x5EFA;&#x65B0;&#x5206;&#x652F;</h3><p><code>$ git branch name</code></p>
-<h3 id="&#x5207;&#x6362;&#x5206;&#x652F;"><a href="#&#x5207;&#x6362;&#x5206;&#x652F;" class="headerlink" title="&#x5207;&#x6362;&#x5206;&#x652F;"></a>&#x5207;&#x6362;&#x5206;&#x652F;</h3><p><code>$ git checkout name</code></p>
-<h3 id="&#x5220;&#x9664;&#x672C;&#x5730;&#x5206;&#x652F;"><a href="#&#x5220;&#x9664;&#x672C;&#x5730;&#x5206;&#x652F;" class="headerlink" title="&#x5220;&#x9664;&#x672C;&#x5730;&#x5206;&#x652F;"></a>&#x5220;&#x9664;&#x672C;&#x5730;&#x5206;&#x652F;</h3><p><code>$ git branch -d name</code></p>
-<h3 id="&#x5220;&#x9664;&#x8FDC;&#x7A0B;&#x5206;&#x652F;"><a href="#&#x5220;&#x9664;&#x8FDC;&#x7A0B;&#x5206;&#x652F;" class="headerlink" title="&#x5220;&#x9664;&#x8FDC;&#x7A0B;&#x5206;&#x652F;"></a>&#x5220;&#x9664;&#x8FDC;&#x7A0B;&#x5206;&#x652F;</h3><p><code>$ git push origin : name</code></p>
+        <h3 id="初始化本地git仓库"><a href="#初始化本地git仓库" class="headerlink" title="初始化本地git仓库"></a>初始化本地git仓库</h3><p><code>$ git init</code></p>
+<h3 id="查看当前仓库状态"><a href="#查看当前仓库状态" class="headerlink" title="查看当前仓库状态"></a>查看当前仓库状态</h3><p><code>$ git status</code></p>
+<h3 id="查看修改日志"><a href="#查看修改日志" class="headerlink" title="查看修改日志"></a>查看修改日志</h3><p><code>$ git log</code></p>
+<h3 id="恢复到某个版本"><a href="#恢复到某个版本" class="headerlink" title="恢复到某个版本"></a>恢复到某个版本</h3><p><code>$ git reset --hard HEAD</code>(HEAD 指的是通过<code>$ git log</code>命令来获取的commit的后6位值)</p>
+<h3 id="添加所有文件到缓存"><a href="#添加所有文件到缓存" class="headerlink" title="添加所有文件到缓存"></a>添加所有文件到缓存</h3><p><code>$ git add --all</code></p>
+<h3 id="提交修改信息"><a href="#提交修改信息" class="headerlink" title="提交修改信息"></a>提交修改信息</h3><p><code>$ git commit -m &quot;修改信息&quot;</code></p>
+<h3 id="推送到远程仓库"><a href="#推送到远程仓库" class="headerlink" title="推送到远程仓库"></a>推送到远程仓库</h3><p><code>$ git push -u origin master</code></p>
+<h3 id="从远程仓库获取数据"><a href="#从远程仓库获取数据" class="headerlink" title="从远程仓库获取数据"></a>从远程仓库获取数据</h3><p><code>$ git pull origin master</code></p>
+<h3 id="列出所有分支"><a href="#列出所有分支" class="headerlink" title="列出所有分支"></a>列出所有分支</h3><p><code>$ git branch</code></p>
+<h3 id="创建新分支"><a href="#创建新分支" class="headerlink" title="创建新分支"></a>创建新分支</h3><p><code>$ git branch name</code></p>
+<h3 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h3><p><code>$ git checkout name</code></p>
+<h3 id="删除本地分支"><a href="#删除本地分支" class="headerlink" title="删除本地分支"></a>删除本地分支</h3><p><code>$ git branch -d name</code></p>
+<h3 id="删除远程分支"><a href="#删除远程分支" class="headerlink" title="删除远程分支"></a>删除远程分支</h3><p><code>$ git push origin : name</code></p>
 
       
     </div>
@@ -465,7 +461,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -482,7 +478,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -548,7 +544,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

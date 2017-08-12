@@ -86,21 +86,23 @@
 
 
 
-<meta name="description" content="&amp;#x4EC0;&amp;#x4E48;&amp;#x662F;NodeJsNode.js&amp;#x662F;&amp;#x4E00;&amp;#x4E2A;&amp;#x57FA;&amp;#x4E8E;ChromeV8&amp;#x5F15;&amp;#x64CE;&amp;#x7684;Javascript&amp;#x8FD0;&amp;#x884C;&amp;#x73AF;&amp;#x5883;&amp;#x3002;Node.js&amp;#x4F7F;&amp;#x7528;&amp;#x4E86;&amp;#x4E00;&amp;">
+<meta name="description" content="什么是NodeJsNode.js是一个基于ChromeV8引擎的Javascript运行环境。Node.js使用了一个事件驱动、非阻塞式IO的模型，使其轻量又高效。Node.js的包管理器npm，是全球最大的开源库生态系统。简单来说Node是js的一个虚拟机（平台）,能够解析js代码,使其运行在各个平台,这有点类似java的jvm。同时Node平台内部提供了大量的工具库,使js能与操作系统进行交">
+<meta name="keywords" content="-- NodeJs学习笔记 -- NodeJs -- NodeJs简介">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Node学习笔记1——初识NodeJs">
 <meta property="og:url" content="http://www.taoyage.net/2016/11/25/Node学习笔记1——初识Node/index.html">
 <meta property="og:site_name" content="accord">
-<meta property="og:description" content="&amp;#x4EC0;&amp;#x4E48;&amp;#x662F;NodeJsNode.js&amp;#x662F;&amp;#x4E00;&amp;#x4E2A;&amp;#x57FA;&amp;#x4E8E;ChromeV8&amp;#x5F15;&amp;#x64CE;&amp;#x7684;Javascript&amp;#x8FD0;&amp;#x884C;&amp;#x73AF;&amp;#x5883;&amp;#x3002;Node.js&amp;#x4F7F;&amp;#x7528;&amp;#x4E86;&amp;#x4E00;&amp;">
-<meta property="og:image" content="http://www.taoyage.net/2016/11/25/Node学习笔记1——初识Node/./初识node.png">
-<meta property="og:image" content="http://www.taoyage.net/2016/11/25/Node学习笔记1——初识Node/./Node_construction.jpeg">
-<meta property="og:image" content="http://www.taoyage.net/2016/11/25/Node学习笔记1——初识Node/./web1.png">
-<meta property="og:image" content="http://www.taoyage.net/2016/11/25/Node学习笔记1——初识Node/./web2.png">
+<meta property="og:description" content="什么是NodeJsNode.js是一个基于ChromeV8引擎的Javascript运行环境。Node.js使用了一个事件驱动、非阻塞式IO的模型，使其轻量又高效。Node.js的包管理器npm，是全球最大的开源库生态系统。简单来说Node是js的一个虚拟机（平台）,能够解析js代码,使其运行在各个平台,这有点类似java的jvm。同时Node平台内部提供了大量的工具库,使js能与操作系统进行交">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.taoyage.net/2016/11/25/Node学习笔记1——初识Node/初识node.png">
+<meta property="og:image" content="http://www.taoyage.net/2016/11/25/Node学习笔记1——初识Node/Node_construction.jpeg">
+<meta property="og:image" content="http://www.taoyage.net/2016/11/25/Node学习笔记1——初识Node/web1.png">
+<meta property="og:image" content="http://www.taoyage.net/2016/11/25/Node学习笔记1——初识Node/web2.png">
 <meta property="og:updated_time" content="2016-11-25T08:43:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Node学习笔记1——初识NodeJs">
-<meta name="twitter:description" content="&amp;#x4EC0;&amp;#x4E48;&amp;#x662F;NodeJsNode.js&amp;#x662F;&amp;#x4E00;&amp;#x4E2A;&amp;#x57FA;&amp;#x4E8E;ChromeV8&amp;#x5F15;&amp;#x64CE;&amp;#x7684;Javascript&amp;#x8FD0;&amp;#x884C;&amp;#x73AF;&amp;#x5883;&amp;#x3002;Node.js&amp;#x4F7F;&amp;#x7528;&amp;#x4E86;&amp;#x4E00;&amp;">
-<meta name="twitter:image" content="http://www.taoyage.net/2016/11/25/Node学习笔记1——初识Node/./初识node.png">
+<meta name="twitter:description" content="什么是NodeJsNode.js是一个基于ChromeV8引擎的Javascript运行环境。Node.js使用了一个事件驱动、非阻塞式IO的模型，使其轻量又高效。Node.js的包管理器npm，是全球最大的开源库生态系统。简单来说Node是js的一个虚拟机（平台）,能够解析js代码,使其运行在各个平台,这有点类似java的jvm。同时Node平台内部提供了大量的工具库,使js能与操作系统进行交">
+<meta name="twitter:image" content="http://www.taoyage.net/2016/11/25/Node学习笔记1——初识Node/初识node.png">
 
 
 
@@ -275,7 +277,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-25T15:07:50+09:00" content="2016-11-25">
+            <time itemprop="dateCreated" datetime="2016-11-25T15:07:50+08:00" content="2016-11-25">
               2016-11-25
             </time>
           </span>
@@ -338,47 +340,47 @@
       
 
       
-        <p><img src="/2016/11/25/Node&#x5B66;&#x4E60;&#x7B14;&#x8BB0;1&#x2014;&#x2014;&#x521D;&#x8BC6;Node/./&#x521D;&#x8BC6;node.png" alt="&#x521D;&#x8BC6;Nodejs&#x8111;&#x56FE;"></p>
-<h2 id="&#x4EC0;&#x4E48;&#x662F;NodeJs"><a href="#&#x4EC0;&#x4E48;&#x662F;NodeJs" class="headerlink" title="&#x4EC0;&#x4E48;&#x662F;NodeJs"></a>&#x4EC0;&#x4E48;&#x662F;NodeJs</h2><p>Node.js&#x662F;&#x4E00;&#x4E2A;&#x57FA;&#x4E8E;ChromeV8&#x5F15;&#x64CE;&#x7684;Javascript&#x8FD0;&#x884C;&#x73AF;&#x5883;&#x3002;Node.js&#x4F7F;&#x7528;&#x4E86;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x9A71;&#x52A8;&#x3001;&#x975E;&#x963B;&#x585E;&#x5F0F;IO&#x7684;&#x6A21;&#x578B;&#xFF0C;&#x4F7F;&#x5176;&#x8F7B;&#x91CF;&#x53C8;&#x9AD8;&#x6548;&#x3002;Node.js&#x7684;&#x5305;&#x7BA1;&#x7406;&#x5668;npm&#xFF0C;&#x662F;&#x5168;&#x7403;&#x6700;&#x5927;&#x7684;&#x5F00;&#x6E90;&#x5E93;&#x751F;&#x6001;&#x7CFB;&#x7EDF;&#x3002;&#x7B80;&#x5355;&#x6765;&#x8BF4;Node&#x662F;js&#x7684;&#x4E00;&#x4E2A;&#x865A;&#x62DF;&#x673A;&#xFF08;&#x5E73;&#x53F0;&#xFF09;,&#x80FD;&#x591F;&#x89E3;&#x6790;js&#x4EE3;&#x7801;,&#x4F7F;&#x5176;&#x8FD0;&#x884C;&#x5728;&#x5404;&#x4E2A;&#x5E73;&#x53F0;,&#x8FD9;&#x6709;&#x70B9;&#x7C7B;&#x4F3C;java&#x7684;jvm&#x3002;&#x540C;&#x65F6;Node&#x5E73;&#x53F0;&#x5185;&#x90E8;&#x63D0;&#x4F9B;&#x4E86;&#x5927;&#x91CF;&#x7684;&#x5DE5;&#x5177;&#x5E93;,&#x4F7F;js&#x80FD;&#x4E0E;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x8FDB;&#x884C;&#x4EA4;&#x4E92;,&#x4F8B;&#x5982;&#x8BFB;&#x5199;&#x6587;&#x4EF6;&#x3002;</p>
-<h2 id="NodeJs&#x7684;&#x8BDE;&#x751F;&#x5386;&#x7A0B;"><a href="#NodeJs&#x7684;&#x8BDE;&#x751F;&#x5386;&#x7A0B;" class="headerlink" title="NodeJs&#x7684;&#x8BDE;&#x751F;&#x5386;&#x7A0B;"></a>NodeJs&#x7684;&#x8BDE;&#x751F;&#x5386;&#x7A0B;</h2><ul>
-<li>2009&#x5E74;3&#x6708;&#xFF0C;Ryan Dahl&#x5728;&#x535A;&#x5BA2;&#x5BA3;&#x5E03;&#x521B;&#x5EFA;</li>
-<li>2009&#x5E74;5&#x6708;&#xFF0C;Ryan Dahl&#x5728;GitHub&#x4E2D;&#x5F00;&#x6E90;&#x4E86;&#x6700;&#x521D;&#x7248;&#x672C;&#xFF0C;&#x540C;&#x5E74;11&#x6708;&#x7684;JSConf&#x5C31;&#x5B89;&#x6392;&#x4E86;Node&#x8BB2;&#x5EA7;</li>
-<li>2010&#x5E74;&#x5E95;&#xFF0C;Ryan Dahl&#x52A0;&#x5165;Joyent&#x5168;&#x804C;&#x8D1F;&#x8D23;Node&#x7684;&#x53D1;&#x5C55;</li>
-<li>2011&#x5E74;7&#x6708;&#xFF0C;&#x5728;&#x5FAE;&#x8F6F;&#x7684;&#x652F;&#x6301;&#x4E0B;&#x767B;&#x9646;Windows&#x5E73;&#x53F0;</li>
-<li>2012&#x5E74;1&#x6708;&#x5E95;&#xFF0C;Ryan Dahl&#x5C06;&#x638C;&#x95E8;&#x4EBA;&#x8EAB;&#x4EFD;&#x4EA4;&#x7ED9;NPM&#x7684;&#x4F5C;&#x8005;lssac Z.Schlueter</li>
-<li>2013&#x5E74;7&#x6708;&#xFF0C;&#x53D1;&#x5E03;&#x7A33;&#x5B9A;&#x7248;v0.10.13</li>
-<li>&#x968F;&#x540E;&#xFF0C;Node&#x7684;&#x53D1;&#x5E03;&#x8BA1;&#x5212;&#x4E3B;&#x8981;&#x96C6;&#x4E2D;&#x5728;&#x6027;&#x80FD;&#x4E0A;&#x9762;&#xFF0C;&#x7531;V0.14&#x540E;&#x6B63;&#x5F0F;&#x53D1;&#x5E03;&#x4E86;V1.0&#x7248;&#x672C;</li>
+        <p><img src="/2016/11/25/Node学习笔记1——初识Node/初识node.png" alt="初识Nodejs脑图"></p>
+<h2 id="什么是NodeJs"><a href="#什么是NodeJs" class="headerlink" title="什么是NodeJs"></a>什么是NodeJs</h2><p>Node.js是一个基于ChromeV8引擎的Javascript运行环境。Node.js使用了一个事件驱动、非阻塞式IO的模型，使其轻量又高效。Node.js的包管理器npm，是全球最大的开源库生态系统。简单来说Node是js的一个虚拟机（平台）,能够解析js代码,使其运行在各个平台,这有点类似java的jvm。同时Node平台内部提供了大量的工具库,使js能与操作系统进行交互,例如读写文件。</p>
+<h2 id="NodeJs的诞生历程"><a href="#NodeJs的诞生历程" class="headerlink" title="NodeJs的诞生历程"></a>NodeJs的诞生历程</h2><ul>
+<li>2009年3月，Ryan Dahl在博客宣布创建</li>
+<li>2009年5月，Ryan Dahl在GitHub中开源了最初版本，同年11月的JSConf就安排了Node讲座</li>
+<li>2010年底，Ryan Dahl加入Joyent全职负责Node的发展</li>
+<li>2011年7月，在微软的支持下登陆Windows平台</li>
+<li>2012年1月底，Ryan Dahl将掌门人身份交给NPM的作者lssac Z.Schlueter</li>
+<li>2013年7月，发布稳定版v0.10.13</li>
+<li>随后，Node的发布计划主要集中在性能上面，由V0.14后正式发布了V1.0版本</li>
 </ul>
-<h2 id="Nodejs&#x7684;&#x7279;&#x70B9;"><a href="#Nodejs&#x7684;&#x7279;&#x70B9;" class="headerlink" title="Nodejs&#x7684;&#x7279;&#x70B9;"></a>Nodejs&#x7684;&#x7279;&#x70B9;</h2><ul>
-<li>&#x5F02;&#x6B65;I/O</li>
-<li>&#x5355;&#x7EBF;&#x7A0B;</li>
-<li>&#x4E8B;&#x4EF6;&#x4E0E;&#x56DE;&#x8C03;&#x51FD;&#x6570;</li>
-<li>&#x8DE8;&#x5E73;&#x53F0;</li>
+<h2 id="Nodejs的特点"><a href="#Nodejs的特点" class="headerlink" title="Nodejs的特点"></a>Nodejs的特点</h2><ul>
+<li>异步I/O</li>
+<li>单线程</li>
+<li>事件与回调函数</li>
+<li>跨平台</li>
 </ul>
-<h2 id="NodeJs&#x7ED3;&#x6784;"><a href="#NodeJs&#x7ED3;&#x6784;" class="headerlink" title="NodeJs&#x7ED3;&#x6784;"></a>NodeJs&#x7ED3;&#x6784;</h2><p><img src="/2016/11/25/Node&#x5B66;&#x4E60;&#x7B14;&#x8BB0;1&#x2014;&#x2014;&#x521D;&#x8BC6;Node/./Node_construction.jpeg" alt="Node_construction"></p>
-<p>&#x4ECE;&#x4E0A;&#x9762;&#x8FD9;&#x5F20;&#x56FE;&#x6765;&#x770B;,NodeJS&#x7684;&#x7ED3;&#x6784;&#x5206;&#x4E3A;3&#x5C42;:</p>
+<h2 id="NodeJs结构"><a href="#NodeJs结构" class="headerlink" title="NodeJs结构"></a>NodeJs结构</h2><p><img src="/2016/11/25/Node学习笔记1——初识Node/Node_construction.jpeg" alt="Node_construction"></p>
+<p>从上面这张图来看,NodeJS的结构分为3层:</p>
 <ul>
-<li><p>Node standard Libarary(Node.js&#x6807;&#x51C6;&#x5E93;),&#x6E90;&#x7801;&#x5728;lib&#x76EE;&#x5F55;&#x4E0B;,&#x662F;&#x4E00;&#x4E2A;&#x7528;javascript&#x7F16;&#x5199;&#x7684;&#x5E93;,&#x91CC;&#x9762;&#x5305;&#x542B;&#x4E86;http,fs,events,buffer&#x7B49;Nodejs&#x63D0;&#x4F9B;&#x7684;&#x6838;&#x5FC3;&#x6A21;&#x5757;,<br>javascript&#x80FD;&#x591F;&#x901A;&#x8FC7;Api&#x76F4;&#x63A5;&#x53BB;&#x8C03;&#x7528;&#x8FD9;&#x4E9B;&#x6A21;&#x5757;,&#x4F8B;&#x5982;: <code>let fs = require(&apos;fs&apos;)</code> &#x3002;</p>
+<li><p>Node standard Libarary(Node.js标准库),源码在lib目录下,是一个用javascript编写的库,里面包含了http,fs,events,buffer等Nodejs提供的核心模块,<br>javascript能够通过Api直接去调用这些模块,例如: <code>let fs = require(&#39;fs&#39;)</code> 。</p>
 </li>
-<li><p>&#x7B2C;&#x4E8C;&#x5C42;&#x7684;Node bindings&#x662F;js&#x4E0E;&#x5E95;&#x5C42;&#x6C9F;&#x901A;&#x7684;&#x4E00;&#x5EA7;&#x6865;&#x6881;,&#x4F7F;&#x5176;&#x80FD;&#x4E0E;&#x5E95;&#x5C42;&#x76F8;&#x4E92;&#x6C9F;&#x901A;,bindings&#x662F;&#x4E00;&#x4E2A;&#x53C8;c++&#x5B9E;&#x73B0;,&#x6E90;&#x7801;&#x5728;src/node.cc&#x3002;</p>
+<li><p>第二层的Node bindings是js与底层沟通的一座桥梁,使其能与底层相互沟通,bindings是一个又c++实现,源码在src/node.cc。</p>
 </li>
-<li><p>&#x6700;&#x540E;&#x4E00;&#x5C42;&#x662F;node&#x7684;&#x6700;&#x5E95;&#x5C42;&#x7ED3;&#x6784;</p>
+<li><p>最后一层是node的最底层结构</p>
 <ul>
-<li><p>V8: Google&#x5F00;&#x6E90;&#x7684;&#x9AD8;&#x6027;&#x80FD;JavaScript&#x5F15;&#x64CE;,&#x4EE5;C++&#x5B9E;&#x73B0;&#x3002;&#x8FD9;&#x4E5F;&#x662F;&#x96C6;&#x6210;&#x5728;Chrome&#x4E2D;&#x7684;JS&#x5F15;&#x64CE;V8&#x5C06;&#x4F60;&#x5199;&#x7684;JavaScript<br>&#x4EE3;&#x7801;&#x7F16;&#x8BD1;&#x4E3A;&#x673A;&#x5668;&#x7801;&#x7136;&#x540E;&#x6267;&#x884C;&#x3002;</p>
+<li><p>V8: Google开源的高性能JavaScript引擎,以C++实现。这也是集成在Chrome中的JS引擎V8将你写的JavaScript<br>代码编译为机器码然后执行。</p>
 </li>
-<li><p>Libuv: &#x662F;&#x4E00;&#x4E2A;&#x7528;c&#x8BED;&#x8A00;&#x5B9E;&#x73B0;&#x7684;&#x5E93;,&#x5B83;&#x4E3A;Nodejs&#x63D0;&#x4F9B;&#x7684;&#x8DE8;&#x5E73;&#x53F0;&#x7684;&#x64CD;&#x4F5C;,&#x5728;&#x5176;&#x5185;&#x90E8;&#x63D0;&#x4F9B;&#x4E86;&#x4E8B;&#x4EF6;&#x5FAA;&#x73AF;(Event Loop),&#x7EBF;&#x7A0B;&#x6C60;,&#x5F02;&#x6B65;I/O&#x7B49;&#x529F;&#x80FD;&#x3002;</p>
+<li><p>Libuv: 是一个用c语言实现的库,它为Nodejs提供的跨平台的操作,在其内部提供了事件循环(Event Loop),线程池,异步I/O等功能。</p>
 </li>
-<li><p>C-ares&#xFF1A;&#x63D0;&#x4F9B;&#x4E86;&#x5F02;&#x6B65;&#x5904;&#x7406;DNS&#x76F8;&#x5173;&#x7684;&#x80FD;&#x529B;&#x3002;</p>
+<li><p>C-ares：提供了异步处理DNS相关的能力。</p>
 </li>
-<li><p>http_parser&#x3001;OpenSSL&#x3001;zlib &#x7B49;&#xFF1A;&#x63D0;&#x4F9B;&#x5305;&#x62EC;http&#x89E3;&#x6790;&#x3001;SSL&#x5B89;&#x5168;&#x534F;&#x8BAE;&#x3001;&#x6570;&#x636E;&#x538B;&#x7F29;&#x7B49;&#x5176;&#x4ED6;&#x7684;&#x80FD;&#x529B;&#x3002;</p>
-</li>
-</ul>
+<li><p>http_parser、OpenSSL、zlib 等：提供包括http解析、SSL安全协议、数据压缩等其他的能力。</p>
 </li>
 </ul>
-<h2 id="NodeJs&#x5728;web&#x4E2D;&#x7684;&#x4F7F;&#x7528;"><a href="#NodeJs&#x5728;web&#x4E2D;&#x7684;&#x4F7F;&#x7528;" class="headerlink" title="NodeJs&#x5728;web&#x4E2D;&#x7684;&#x4F7F;&#x7528;"></a>NodeJs&#x5728;web&#x4E2D;&#x7684;&#x4F7F;&#x7528;</h2><p><img src="/2016/11/25/Node&#x5B66;&#x4E60;&#x7B14;&#x8BB0;1&#x2014;&#x2014;&#x521D;&#x8BC6;Node/./web1.png" alt="web&#x5E94;&#x7528;1"></p>
-<p>&#x8FD9;&#x5F20;&#x56FE;&#x662F;&#x628A;Node&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x670D;&#x52A1;&#x5668;&#x6765;&#x5904;&#x7406;&#x6240;&#x6709;&#x7528;&#x6237;&#x7684;&#x63A5;&#x53D7;&#x548C;&#x54CD;&#x5E94;</p>
-<p><img src="/2016/11/25/Node&#x5B66;&#x4E60;&#x7B14;&#x8BB0;1&#x2014;&#x2014;&#x521D;&#x8BC6;Node/./web2.png" alt="web&#x5E94;&#x7528;2"></p>
-<p>&#x8FD9;&#x5F20;&#x56FE;&#x662F;&#x628A;Node&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x4E2D;&#x95F4;&#x670D;&#x52A1;&#x5668;&#x6765;&#x7528;,&#x4E3B;&#x8981;&#x662F;&#x8FDB;&#x884C;&#x5206;&#x53D1;&#x7B49;&#x5DE5;&#x4F5C;,&#x5177;&#x4F53;&#x6B65;&#x9AA4;&#x662F;Node&#x6765;&#x63A5;&#x53D7;&#x5BA2;&#x6237;&#x7AEF;&#x4F20;&#x6765;&#x7684;&#x4FE1;&#x606F;,&#x7136;&#x540E;&#x628A;&#x4E8B;&#x4EF6;&#x4EA4;&#x6258;&#x7ED9;&#x4F20;&#x7EDF;java&#x7B49;&#x670D;&#x52A1;&#x5668;&#x6765;&#x5904;&#x7406;,&#x5904;&#x7406;&#x5B8C;&#x540E;&#x8FD4;&#x56DE;&#x7ED9;node&#x670D;&#x52A1;&#x5668;,&#x7136;&#x540E;&#x54CD;&#x5E94;&#x7ED9;&#x5BA2;&#x6237;&#x7AEF;</p>
+</li>
+</ul>
+<h2 id="NodeJs在web中的使用"><a href="#NodeJs在web中的使用" class="headerlink" title="NodeJs在web中的使用"></a>NodeJs在web中的使用</h2><p><img src="/2016/11/25/Node学习笔记1——初识Node/web1.png" alt="web应用1"></p>
+<p>这张图是把Node作为一个服务器来处理所有用户的接受和响应</p>
+<p><img src="/2016/11/25/Node学习笔记1——初识Node/web2.png" alt="web应用2"></p>
+<p>这张图是把Node作为一个中间服务器来用,主要是进行分发等工作,具体步骤是Node来接受客户端传来的信息,然后把事件交托给传统java等服务器来处理,处理完后返回给node服务器,然后响应给客户端</p>
 
       
     </div>
@@ -492,7 +494,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -509,7 +511,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -575,7 +577,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

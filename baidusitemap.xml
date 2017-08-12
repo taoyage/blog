@@ -4,12 +4,32 @@
 
     
   <url>
+    <loc>http://www.taoyage.net/2017/08/12/Angular4%E5%85%A5%E9%97%A8/</loc>
+    <lastmod>2017-08-12T16:16:23.000Z</lastmod>
+    <data>
+        <display>
+        <title>Angular4入门</title>
+        <pubTime>2017-08-12T09:35:20.000Z</pubTime>
+        
+        <tag>-- Angular4 -- Angular4入门 -- 前端流行框架</tag>
+         
+         
+           
+             
+              <breadCrumb title="web前端" url="http://www.taoyage.net/categories/web%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.taoyage.net/2016/11/30/Node%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%E2%80%94%E2%80%94%E5%BC%82%E6%AD%A5I-O/</loc>
     <lastmod>2016-12-05T08:34:46.000Z</lastmod>
     <data>
         <display>
         <title>Node学习笔记2——异步I/O</title>
-        <pubTime>2016-11-30T07:40:25.000Z</pubTime>
+        <pubTime>2016-11-30T08:40:25.000Z</pubTime>
         
         <tag>nodejs学习笔记</tag>
          
@@ -35,7 +55,7 @@
     <data>
         <display>
         <title>Node学习笔记1——初识NodeJs</title>
-        <pubTime>2016-11-25T06:07:50.000Z</pubTime>
+        <pubTime>2016-11-25T07:07:50.000Z</pubTime>
         
         <tag>-- NodeJs学习笔记 -- NodeJs -- NodeJs简介</tag>
          
@@ -55,7 +75,7 @@
     <data>
         <display>
         <title>使用babel启动node并解析es6语法</title>
-        <pubTime>2016-11-12T14:36:30.000Z</pubTime>
+        <pubTime>2016-11-12T15:36:30.000Z</pubTime>
         
         <tag>-- babel -- babel启动node -- babel解析es6语法</tag>
          
@@ -75,7 +95,7 @@
     <data>
         <display>
         <title>sublime前端常用插件</title>
-        <pubTime>2016-11-12T06:20:45.000Z</pubTime>
+        <pubTime>2016-11-12T07:20:45.000Z</pubTime>
         
         <tag>-- sublime -- sublime插件</tag>
          
@@ -95,7 +115,7 @@
     <data>
         <display>
         <title>前端优化方法</title>
-        <pubTime>2016-10-29T14:12:06.000Z</pubTime>
+        <pubTime>2016-10-29T15:12:06.000Z</pubTime>
         
         <tag>前端优化</tag>
          
@@ -115,7 +135,7 @@
     <data>
         <display>
         <title>jsonp函数实现方法</title>
-        <pubTime>2016-10-08T06:47:44.000Z</pubTime>
+        <pubTime>2016-10-08T07:47:44.000Z</pubTime>
         
         <tag>-- jsonp -- jsonp函数实现方法 -- javascript实现jsonp函数</tag>
          
@@ -135,7 +155,7 @@
     <data>
         <display>
         <title>NeDB中文文档</title>
-        <pubTime>2016-09-29T14:41:15.000Z</pubTime>
+        <pubTime>2016-09-29T15:41:15.000Z</pubTime>
         
         <tag>node嵌入式数据库</tag>
          
@@ -161,7 +181,7 @@
     <data>
         <display>
         <title>markdown基本语法</title>
-        <pubTime>2016-09-26T16:12:54.000Z</pubTime>
+        <pubTime>2016-09-26T17:12:54.000Z</pubTime>
         
         <tag>markdown语法</tag>
          
@@ -181,7 +201,7 @@
     <data>
         <display>
         <title>gulp.js-前端自动化构建工具</title>
-        <pubTime>2016-09-27T04:27:20.000Z</pubTime>
+        <pubTime>2016-09-27T05:27:20.000Z</pubTime>
         
         <tag>-- gulp -- 前端自动化工具</tag>
          
@@ -201,7 +221,7 @@
     <data>
         <display>
         <title>git常用命令</title>
-        <pubTime>2016-09-28T14:41:04.000Z</pubTime>
+        <pubTime>2016-09-28T15:41:04.000Z</pubTime>
         
         <tag>-- git -- github</tag>
          

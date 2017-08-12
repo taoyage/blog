@@ -86,16 +86,18 @@
 
 
 
-<meta name="description" content="jsonpjsonp&amp;#x662F;&amp;#x4E00;&amp;#x79CD;&amp;#x8DE8;&amp;#x57DF;&amp;#x7684;&amp;#x8BF7;&amp;#x6C42;&amp;#x65B9;&amp;#x5F0F;,&amp;#x53EF;&amp;#x4EE5;&amp;#x4ECE;&amp;#x5176;&amp;#x4ED6;&amp;#x57DF;&amp;#x540D;&amp;#x83B7;&amp;#x53D6;&amp;#x6570;&amp;#x636E;,&amp;#x5373;&amp;#x8DE8;&amp;#x5">
+<meta name="description" content="jsonpjsonp是一种跨域的请求方式,可以从其他域名获取数据,即跨域读取数据。 jsonp函数的实现方法12345678910111213141516171819202122232425262728293031323334353637383940/** @Author: accord* @Date:   2016-10-08 11:17:21* @Last Modified by:   acc">
+<meta name="keywords" content="-- jsonp -- jsonp函数实现方法 -- javascript实现jsonp函数">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jsonp函数实现方法">
 <meta property="og:url" content="http://www.taoyage.net/2016/10/08/jsonp函数实现方法/index.html">
 <meta property="og:site_name" content="accord">
-<meta property="og:description" content="jsonpjsonp&amp;#x662F;&amp;#x4E00;&amp;#x79CD;&amp;#x8DE8;&amp;#x57DF;&amp;#x7684;&amp;#x8BF7;&amp;#x6C42;&amp;#x65B9;&amp;#x5F0F;,&amp;#x53EF;&amp;#x4EE5;&amp;#x4ECE;&amp;#x5176;&amp;#x4ED6;&amp;#x57DF;&amp;#x540D;&amp;#x83B7;&amp;#x53D6;&amp;#x6570;&amp;#x636E;,&amp;#x5373;&amp;#x8DE8;&amp;#x5">
+<meta property="og:description" content="jsonpjsonp是一种跨域的请求方式,可以从其他域名获取数据,即跨域读取数据。 jsonp函数的实现方法12345678910111213141516171819202122232425262728293031323334353637383940/** @Author: accord* @Date:   2016-10-08 11:17:21* @Last Modified by:   acc">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-10-29T14:14:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jsonp函数实现方法">
-<meta name="twitter:description" content="jsonpjsonp&amp;#x662F;&amp;#x4E00;&amp;#x79CD;&amp;#x8DE8;&amp;#x57DF;&amp;#x7684;&amp;#x8BF7;&amp;#x6C42;&amp;#x65B9;&amp;#x5F0F;,&amp;#x53EF;&amp;#x4EE5;&amp;#x4ECE;&amp;#x5176;&amp;#x4ED6;&amp;#x57DF;&amp;#x540D;&amp;#x83B7;&amp;#x53D6;&amp;#x6570;&amp;#x636E;,&amp;#x5373;&amp;#x8DE8;&amp;#x5">
+<meta name="twitter:description" content="jsonpjsonp是一种跨域的请求方式,可以从其他域名获取数据,即跨域读取数据。 jsonp函数的实现方法12345678910111213141516171819202122232425262728293031323334353637383940/** @Author: accord* @Date:   2016-10-08 11:17:21* @Last Modified by:   acc">
 
 
 
@@ -270,7 +272,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-08T15:47:44+09:00" content="2016-10-08">
+            <time itemprop="dateCreated" datetime="2016-10-08T15:47:44+08:00" content="2016-10-08">
               2016-10-08
             </time>
           </span>
@@ -333,8 +335,8 @@
       
 
       
-        <h2 id="jsonp"><a href="#jsonp" class="headerlink" title="jsonp"></a>jsonp</h2><p>jsonp&#x662F;&#x4E00;&#x79CD;&#x8DE8;&#x57DF;&#x7684;&#x8BF7;&#x6C42;&#x65B9;&#x5F0F;,&#x53EF;&#x4EE5;&#x4ECE;&#x5176;&#x4ED6;&#x57DF;&#x540D;&#x83B7;&#x53D6;&#x6570;&#x636E;,&#x5373;&#x8DE8;&#x57DF;&#x8BFB;&#x53D6;&#x6570;&#x636E;&#x3002;</p>
-<h2 id="jsonp&#x51FD;&#x6570;&#x7684;&#x5B9E;&#x73B0;&#x65B9;&#x6CD5;"><a href="#jsonp&#x51FD;&#x6570;&#x7684;&#x5B9E;&#x73B0;&#x65B9;&#x6CD5;" class="headerlink" title="jsonp&#x51FD;&#x6570;&#x7684;&#x5B9E;&#x73B0;&#x65B9;&#x6CD5;"></a>jsonp&#x51FD;&#x6570;&#x7684;&#x5B9E;&#x73B0;&#x65B9;&#x6CD5;</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">* @Author: accord</div><div class="line">* @Date:   2016-10-08 11:17:21</div><div class="line">* @Last Modified by:   accord</div><div class="line">* @Last Modified time: 2016-10-08 15:46:18</div><div class="line">*/</div><div class="line"><span class="meta"></span></div><div class="line">&apos;use strict&apos;;</div><div class="line"></div><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">window,document</span>)</span>{</div><div class="line">	<span class="keyword">var</span> jsonp = <span class="function"><span class="keyword">function</span>(<span class="params">url,data,callback</span>)</span>{</div><div class="line"></div><div class="line">		<span class="comment">/*&#x968F;&#x673A;&#x4E00;&#x4E2A;callback&#x51FD;&#x6570;&#x540D; */</span></div><div class="line">		<span class="keyword">var</span> callbackFuncName = <span class="string">&apos;Callback_&apos;</span> + <span class="built_in">Math</span>.random().toString().replace(<span class="string">&apos;.&apos;</span>,<span class="string">&apos;&apos;</span>);</div><div class="line"></div><div class="line">		<span class="comment">/*&#x6DFB;&#x52A0;&#x56DE;&#x8C03;&#x51FD;&#x6570;*/</span></div><div class="line">		<span class="built_in">window</span>[callbackFuncName] = callback;</div><div class="line"></div><div class="line">		<span class="comment">/*&#x5206;&#x89E3;data&#x5BF9;&#x8C61;,&#x62FC;&#x63A5;&#x6210;url&#x5B57;&#x7B26;&#x4E32;&#x5F62;&#x5F0F;*/</span></div><div class="line"></div><div class="line">		<span class="comment">/* {id:1,name:&apos;taoyage&apos;} =&gt; ?id=1&amp;name=taoyage&amp; */</span></div><div class="line">		<span class="keyword">var</span> querystring = url.indexOf(<span class="string">&apos;?&apos;</span>)== <span class="number">-1</span> ? <span class="string">&apos;?&apos;</span>:<span class="string">&apos;&amp;&apos;</span>;</div><div class="line"></div><div class="line">		<span class="keyword">for</span>(<span class="keyword">var</span> key <span class="keyword">in</span> data){</div><div class="line">			querystring += key + <span class="string">&apos;=&apos;</span> + data[key] + <span class="string">&apos;&amp;&apos;</span>;</div><div class="line">		}</div><div class="line"></div><div class="line">		<span class="comment">/*&#x8FDB;&#x884C;&#x62FC;&#x63A5;*/</span></div><div class="line">		<span class="comment">/* ?id=1&amp;name=taoyage&amp;callback=jsonCallback_1231313 */</span></div><div class="line">		querystring += <span class="string">&apos;callback=&apos;</span> + callbackFuncName;</div><div class="line"></div><div class="line">		<span class="comment">/*&#x521B;&#x5EFA;script&#x6807;&#x7B7E;*/</span></div><div class="line">		<span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">&apos;script&apos;</span>);</div><div class="line">		script.src = url + querystring;</div><div class="line">		<span class="built_in">document</span>.body.appendChild(script);</div><div class="line">	}</div><div class="line"></div><div class="line">	<span class="built_in">window</span>.$jsonp = jsonp;</div><div class="line"></div><div class="line">})(<span class="built_in">window</span>,<span class="built_in">document</span>);</div></pre></td></tr></table></figure>
+        <h2 id="jsonp"><a href="#jsonp" class="headerlink" title="jsonp"></a>jsonp</h2><p>jsonp是一种跨域的请求方式,可以从其他域名获取数据,即跨域读取数据。</p>
+<h2 id="jsonp函数的实现方法"><a href="#jsonp函数的实现方法" class="headerlink" title="jsonp函数的实现方法"></a>jsonp函数的实现方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">* @Author: accord</span></div><div class="line"><span class="comment">* @Date:   2016-10-08 11:17:21</span></div><div class="line"><span class="comment">* @Last Modified by:   accord</span></div><div class="line"><span class="comment">* @Last Modified time: 2016-10-08 15:46:18</span></div><div class="line"><span class="comment">*/</span></div><div class="line"></div><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">window,document</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> jsonp = <span class="function"><span class="keyword">function</span>(<span class="params">url,data,callback</span>)</span>&#123;</div><div class="line"></div><div class="line">		<span class="comment">/*随机一个callback函数名 */</span></div><div class="line">		<span class="keyword">var</span> callbackFuncName = <span class="string">'Callback_'</span> + <span class="built_in">Math</span>.random().toString().replace(<span class="string">'.'</span>,<span class="string">''</span>);</div><div class="line"></div><div class="line">		<span class="comment">/*添加回调函数*/</span></div><div class="line">		<span class="built_in">window</span>[callbackFuncName] = callback;</div><div class="line"></div><div class="line">		<span class="comment">/*分解data对象,拼接成url字符串形式*/</span></div><div class="line"></div><div class="line">		<span class="comment">/* &#123;id:1,name:'taoyage'&#125; =&gt; ?id=1&amp;name=taoyage&amp; */</span></div><div class="line">		<span class="keyword">var</span> querystring = url.indexOf(<span class="string">'?'</span>)== <span class="number">-1</span> ? <span class="string">'?'</span>:<span class="string">'&amp;'</span>;</div><div class="line"></div><div class="line">		<span class="keyword">for</span>(<span class="keyword">var</span> key <span class="keyword">in</span> data)&#123;</div><div class="line">			querystring += key + <span class="string">'='</span> + data[key] + <span class="string">'&amp;'</span>;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="comment">/*进行拼接*/</span></div><div class="line">		<span class="comment">/* ?id=1&amp;name=taoyage&amp;callback=jsonCallback_1231313 */</span></div><div class="line">		querystring += <span class="string">'callback='</span> + callbackFuncName;</div><div class="line"></div><div class="line">		<span class="comment">/*创建script标签*/</span></div><div class="line">		<span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</div><div class="line">		script.src = url + querystring;</div><div class="line">		<span class="built_in">document</span>.body.appendChild(script);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="built_in">window</span>.$jsonp = jsonp;</div><div class="line"></div><div class="line">&#125;)(<span class="built_in">window</span>,<span class="built_in">document</span>);</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -448,7 +450,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -465,7 +467,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -531,7 +533,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -86,22 +86,18 @@
 
 
 
-<meta name="description" content="babel&amp;#x5B89;&amp;#x88C5;&amp;#x4F7F;&amp;#x7528;&amp;#x524D;&amp;#x5148;&amp;#x5B89;&amp;#x88C5;babel-cli
-$ npm install --save-dev babel-cli
-&amp;#x5B89;&amp;#x88C5;&amp;#x5B8C;&amp;#x6210;&amp;#x540E;,&amp;#x5728;&amp;#x4F60;&amp;#x7684;package.json&amp;#x6587;&amp;">
+<meta name="description" content="babel安装使用前先安装babel-cli $ npm install --save-dev babel-cli 安装完成后,在你的package.json文件里应该会出现像下面这样的: 123&quot;devDependencies&quot;: &amp;#123;   	&quot;babel-cli&quot;: &quot;^6.18.0&quot;&amp;#125; 创建babel配置文件.babelrc使用babel需要在根目录下添加.babelrc配">
+<meta name="keywords" content="-- babel -- babel启动node -- babel解析es6语法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用babel启动node并解析es6语法">
 <meta property="og:url" content="http://www.taoyage.net/2016/11/12/使用babel来解析nodejs中的es6并启动/index.html">
 <meta property="og:site_name" content="accord">
-<meta property="og:description" content="babel&amp;#x5B89;&amp;#x88C5;&amp;#x4F7F;&amp;#x7528;&amp;#x524D;&amp;#x5148;&amp;#x5B89;&amp;#x88C5;babel-cli
-$ npm install --save-dev babel-cli
-&amp;#x5B89;&amp;#x88C5;&amp;#x5B8C;&amp;#x6210;&amp;#x540E;,&amp;#x5728;&amp;#x4F60;&amp;#x7684;package.json&amp;#x6587;&amp;">
+<meta property="og:description" content="babel安装使用前先安装babel-cli $ npm install --save-dev babel-cli 安装完成后,在你的package.json文件里应该会出现像下面这样的: 123&quot;devDependencies&quot;: &amp;#123;   	&quot;babel-cli&quot;: &quot;^6.18.0&quot;&amp;#125; 创建babel配置文件.babelrc使用babel需要在根目录下添加.babelrc配">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-11-12T15:03:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用babel启动node并解析es6语法">
-<meta name="twitter:description" content="babel&amp;#x5B89;&amp;#x88C5;&amp;#x4F7F;&amp;#x7528;&amp;#x524D;&amp;#x5148;&amp;#x5B89;&amp;#x88C5;babel-cli
-$ npm install --save-dev babel-cli
-&amp;#x5B89;&amp;#x88C5;&amp;#x5B8C;&amp;#x6210;&amp;#x540E;,&amp;#x5728;&amp;#x4F60;&amp;#x7684;package.json&amp;#x6587;&amp;">
+<meta name="twitter:description" content="babel安装使用前先安装babel-cli $ npm install --save-dev babel-cli 安装完成后,在你的package.json文件里应该会出现像下面这样的: 123&quot;devDependencies&quot;: &amp;#123;   	&quot;babel-cli&quot;: &quot;^6.18.0&quot;&amp;#125; 创建babel配置文件.babelrc使用babel需要在根目录下添加.babelrc配">
 
 
 
@@ -276,7 +272,7 @@ $ npm install --save-dev babel-cli
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-12T23:36:30+09:00" content="2016-11-12">
+            <time itemprop="dateCreated" datetime="2016-11-12T23:36:30+08:00" content="2016-11-12">
               2016-11-12
             </time>
           </span>
@@ -339,16 +335,16 @@ $ npm install --save-dev babel-cli
       
 
       
-        <h2 id="babel&#x5B89;&#x88C5;"><a href="#babel&#x5B89;&#x88C5;" class="headerlink" title="babel&#x5B89;&#x88C5;"></a>babel&#x5B89;&#x88C5;</h2><p>&#x4F7F;&#x7528;&#x524D;&#x5148;&#x5B89;&#x88C5;babel-cli</p>
+        <h2 id="babel安装"><a href="#babel安装" class="headerlink" title="babel安装"></a>babel安装</h2><p>使用前先安装babel-cli</p>
 <p><code>$ npm install --save-dev babel-cli</code></p>
-<p>&#x5B89;&#x88C5;&#x5B8C;&#x6210;&#x540E;,&#x5728;&#x4F60;&#x7684;package.json&#x6587;&#x4EF6;&#x91CC;&#x5E94;&#x8BE5;&#x4F1A;&#x51FA;&#x73B0;&#x50CF;&#x4E0B;&#x9762;&#x8FD9;&#x6837;&#x7684;:</p>
-<figure class="highlight xquery"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="string">&quot;devDependencies&quot;</span>: {</div><div class="line">   	<span class="string">&quot;babel-cli&quot;</span>: <span class="string">&quot;^6.18.0&quot;</span></div><div class="line">}</div></pre></td></tr></table></figure>
-<h2 id="&#x521B;&#x5EFA;babel&#x914D;&#x7F6E;&#x6587;&#x4EF6;-babelrc"><a href="#&#x521B;&#x5EFA;babel&#x914D;&#x7F6E;&#x6587;&#x4EF6;-babelrc" class="headerlink" title="&#x521B;&#x5EFA;babel&#x914D;&#x7F6E;&#x6587;&#x4EF6;.babelrc"></a>&#x521B;&#x5EFA;babel&#x914D;&#x7F6E;&#x6587;&#x4EF6;.babelrc</h2><p>&#x4F7F;&#x7528;babel&#x9700;&#x8981;&#x5728;&#x6839;&#x76EE;&#x5F55;&#x4E0B;&#x6DFB;&#x52A0;.babelrc&#x914D;&#x7F6E;&#x6587;&#x4EF6;,&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x7528;&#x6765;&#x8BBE;&#x7F6E;&#x8F6C;&#x7801;&#x7684;&#x89C4;&#x5219;&#x548C;&#x63D2;&#x4EF6;,<br>&#x50CF;&#x4E0B;&#x9762;&#x8FD9;&#x6837;&#x6211;&#x914D;&#x7F6E;&#x4E86;es2015&#x548C;react&#x7684;&#x8F6C;&#x7801;</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">{</div><div class="line">  <span class="attr">&quot;presets&quot;</span>: [</div><div class="line">    <span class="string">&quot;es2015&quot;</span>,</div><div class="line">    <span class="string">&quot;react&quot;</span></div><div class="line">  ],</div><div class="line">  <span class="attr">&quot;plugins&quot;</span>: []</div><div class="line">}</div></pre></td></tr></table></figure>
-<p>&#x4F7F;&#x7528;&#x524D;&#x9700;&#x8981;&#x5B89;&#x88C5;<br><figure class="highlight q"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ npm install --<span class="built_in">save</span>-<span class="built_in">dev</span> babel-preset-es2015</div><div class="line">$ npm install --<span class="built_in">save</span>-<span class="built_in">dev</span> babel-preset-react</div></pre></td></tr></table></figure></p>
-<h2 id="&#x542F;&#x52A8;&#x7528;es6&#x5199;&#x7684;nodejs"><a href="#&#x542F;&#x52A8;&#x7528;es6&#x5199;&#x7684;nodejs" class="headerlink" title="&#x542F;&#x52A8;&#x7528;es6&#x5199;&#x7684;nodejs"></a>&#x542F;&#x52A8;&#x7528;es6&#x5199;&#x7684;nodejs</h2><p>babel-cli&#x91CC;&#x81EA;&#x5E26;babel-node&#x547D;&#x4EE4;<br>&#x5047;&#x8BBE;&#x4F60;&#x7684;node&#x5165;&#x53E3;&#x6587;&#x4EF6;&#x540D;&#x4E3A;server.js,&#x5728;package.json&#x8FDB;&#x884C;&#x5982;&#x4E0B;&#x914D;&#x7F6E;:</p>
-<figure class="highlight xquery"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="string">&quot;scripts&quot;</span>: {</div><div class="line">  <span class="string">&quot;start&quot;</span>: <span class="string">&quot;babel-node server.js&quot;</span></div><div class="line">}</div></pre></td></tr></table></figure>
-<p>&#x6700;&#x540E;&#x901A;&#x8FC7; <code>$ npm start</code> &#x547D;&#x4EE4;&#x6765;&#x542F;&#x52A8;nodejs</p>
+<p>安装完成后,在你的package.json文件里应该会出现像下面这样的:</p>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="string">"devDependencies"</span>: &#123;</div><div class="line">   	<span class="string">"babel-cli"</span>: <span class="string">"^6.18.0"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="创建babel配置文件-babelrc"><a href="#创建babel配置文件-babelrc" class="headerlink" title="创建babel配置文件.babelrc"></a>创建babel配置文件.babelrc</h2><p>使用babel需要在根目录下添加.babelrc配置文件,这个文件用来设置转码的规则和插件,<br>像下面这样我配置了es2015和react的转码</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"presets"</span>: [</div><div class="line">    <span class="string">"es2015"</span>,</div><div class="line">    <span class="string">"react"</span></div><div class="line">  ],</div><div class="line">  <span class="attr">"plugins"</span>: []</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>使用前需要安装<br><figure class="highlight q"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ npm install --<span class="built_in">save</span>-<span class="built_in">dev</span> babel-preset-es2015</div><div class="line">$ npm install --<span class="built_in">save</span>-<span class="built_in">dev</span> babel-preset-react</div></pre></td></tr></table></figure></p>
+<h2 id="启动用es6写的nodejs"><a href="#启动用es6写的nodejs" class="headerlink" title="启动用es6写的nodejs"></a>启动用es6写的nodejs</h2><p>babel-cli里自带babel-node命令<br>假设你的node入口文件名为server.js,在package.json进行如下配置:</p>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="string">"scripts"</span>: &#123;</div><div class="line">  <span class="string">"start"</span>: <span class="string">"babel-node server.js"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>最后通过 <code>$ npm start</code> 命令来启动nodejs</p>
 
       
     </div>
@@ -462,7 +458,7 @@ $ npm install --save-dev babel-cli
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -479,7 +475,7 @@ $ npm install --save-dev babel-cli
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -545,7 +541,7 @@ $ npm install --save-dev babel-cli
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
